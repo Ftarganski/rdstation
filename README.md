@@ -291,9 +291,6 @@ src/
 ### **📚 Arquivos de Documentação**
 
 - 📄 **[PROJETO_COMPLETO_REPORT.md](./PROJETO_COMPLETO_REPORT.md)**: Relatório completo das melhorias
-- 🎨 **[CSS_CONSOLIDATION_REPORT.md](./CSS_CONSOLIDATION_REPORT.md)**: Detalhes da consolidação CSS
-- 🏗️ **[REFACTORING_REPORT.md](./REFACTORING_REPORT.md)**: Processo de refatoração
-- 🎯 **[TAILWIND_USAGE_REPORT.md](./TAILWIND_USAGE_REPORT.md)**: Uso do Tailwind CSS
 
 ### **🔍 API Reference**
 
@@ -341,23 +338,6 @@ GET /products
 
 ---
 
-## 🚀 Deploy
-
-### **📦 Build para Produção**
-
-```bash
-npm run build
-```
-
-### **🌐 Deploy Sugerido**
-
-- **Vercel**: Deploy automático via Git
-- **Netlify**: Build e deploy contínuo
-- **GitHub Pages**: Para projetos open source
-- **AWS S3**: Para hospedagem estática
-
----
-
 ## 📊 Status do Projeto
 
 - ✅ **Core Features**: 100% implementadas
@@ -374,8 +354,8 @@ npm run build
 
 **Desenvolvido com ❤️ por [Ftarganski](https://github.com/Ftarganski)**
 
-- 📧 Email: [seu-email@exemplo.com]
-- 💼 LinkedIn: [seu-linkedin]
+- 📧 Email: [dev@targanski.com](dev@targanski.com)
+- 💼 LinkedIn: [Ftarganski](https://www.linkedin.com/in/targanski/)
 - 🐱 GitHub: [@Ftarganski](https://github.com/Ftarganski)
 
 ---
@@ -399,6 +379,6 @@ Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](L
 
 **⭐ Se este projeto foi útil, considere dar uma estrela!**
 
-Made with ❤️ and ☕ by **Ftarganski**
+Made with ☕ by **Ftarganski**
 
 </div>
