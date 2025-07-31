@@ -7,8 +7,8 @@ const getRecommendations = (
   products = []
 ) => {
   const {
-    selectedPreferences,
-    selectedFeatures,
+    selectedPreferences = [],
+    selectedFeatures = [],
     recommendationType = 'SingleProduct',
   } = formData;
 
@@ -36,13 +36,13 @@ const getRecommendations = (
     return { product, score: prefMatches + featMatches };
   });
 
-  // filtra score>0 e ordena asc
+  // filtra score>0 e ordena desc (maior score primeiro)
   const sorted = scored
     .filter(({ score }) => score > 0)
-    .sort((a, b) => a.score - b.score || a.product.id - b.product.id);
+    .sort((a, b) => b.score - a.score || a.product.id - b.product.id);
 
   if (isSingle) {
-    return sorted.length > 0 ? [sorted[sorted.length - 1].product] : [];
+    return sorted.length > 0 ? [sorted[0].product] : [];
   }
   return sorted.map((entry) => entry.product);
 };

@@ -1,5 +1,4 @@
-import Preferences from './Preferences';
-import RecommendationType from './RecommendationType';
-import Features from './Features';
-
-export { Preferences, RecommendationType, Features };
+// Exportações dos campos refatorados
+export { default as FeaturesField } from "./FeaturesField";
+export { default as PreferencesField } from "./PreferencesField";
+export { default as RecommendationTypeField } from "./RecommendationTypeField";
