@@ -17,6 +17,16 @@ _Desenvolvido com arquitetura moderna, princípios SOLID e Tailwind CSS_
 
 ---
 
+## 📊 Relatório Técnico Completo
+
+> **📋 Para entender completamente o desenvolvimento e as melhorias implementadas neste projeto, leia o relatório técnico completo:**
+>
+> ### 📄 [**PROJETO_COMPLETO_REPORT.md**](./PROJETO_COMPLETO_REPORT.md)
+>
+> Este relatório documenta todo o processo de refatoração, aplicação dos princípios SOLID, DRY, Clean Code, implementação da lógica de recomendação, consolidação CSS e demais ajustes. É **essencial** para compreender a arquitetura, decisões técnicas e qualidade do código implementado.
+
+---
+
 ## 📋 Sobre o Projeto
 
 O **RD Station Recommendation System** é uma aplicação web moderna desenvolvida em React.js que implementa um sistema inteligente de recomendação de produtos. O sistema analisa as preferências e funcionalidades desejadas pelos usuários para fornecer recomendações personalizadas dos produtos RD Station.

@@ -177,7 +177,179 @@ export const ErrorState = memo(({ title, message, onRetry, variant = 'error' }) 
 - Estados padronizados (loading, erro, vazio)
 - Acessibilidade integrada
 
-### **1.5. Serviço de Recomendação com Strategy Pattern**
+### **1.5. Serviço de Recomendação Inteligente**
+
+**📁 Arquivo:** `src/services/recommendation.service.js`
+
+O coração do sistema é o serviço de recomendação, que implementa um algoritmo inteligente de scoring para determinar quais produtos melhor atendem às necessidades do usuário.
+
+#### **🧠 Algoritmo de Recomendação**
+
+```javascript
+const getRecommendations = (formData, products) => {
+	const { selectedPreferences = [], selectedFeatures = [], recommendationType = 'SingleProduct' } = formData;
+
+	// 1. Normalização do tipo de recomendação
+	const type = recommendationType.trim().toLowerCase();
+	const isSingle = type === 'singleproduct' || type === 'produto único' || type === 'produto unico';
+
+	// 2. Cálculo de score por produto
+	const scored = products.map((product) => {
+		const prefMatches = product.preferences.filter((pref) =>
+			selectedPreferences.some((sel) => sel.trim().toLowerCase() === pref.trim().toLowerCase())
+		).length;
+
+		const featMatches = product.features.filter((feat) =>
+			selectedFeatures.some((sel) => sel.trim().toLowerCase() === feat.trim().toLowerCase())
+		).length;
+
+		return { product, score: prefMatches + featMatches };
+	});
+
+	// 3. Filtragem e ordenação
+	const sorted = scored
+		.filter(({ score }) => score > 0)
+		.sort((a, b) => b.score - a.score || a.product.id - b.product.id);
+
+	// 4. Retorno baseado no tipo
+	return isSingle ? (sorted.length > 0 ? [sorted[0].product] : []) : sorted.map(({ product }) => product);
+};
+```
+
+#### **⚙️ Como Funciona o Algoritmo**
+
+**🔢 1. Sistema de Pontuação (Scoring)**
+
+- **Preferências**: +1 ponto para cada preferência correspondente
+- **Funcionalidades**: +1 ponto para cada funcionalidade correspondente
+- **Score Total**: Soma de preferências + funcionalidades
+- **Exemplo**: Produto com 2 preferências + 3 funcionalidades = Score 5
+
+**🔍 2. Normalização de Entrada**
+
+```javascript
+// Comparação case-insensitive e com trim
+sel.trim().toLowerCase() === pref.trim().toLowerCase();
+```
+
+- Remove espaços em branco
+- Converte para minúsculas
+- Garante correspondência exata independente de formatação
+
+**📊 3. Filtragem e Ordenação**
+
+```javascript
+// 1. Filtra apenas produtos com score > 0
+.filter(({ score }) => score > 0)
+
+// 2. Ordena por score decrescente (maior primeiro)
+.sort((a, b) => b.score - a.score || a.product.id - b.product.id)
+```
+
+**🎯 4. Tipos de Recomendação**
+
+| Tipo               | Comportamento                    | Retorno                     |
+| ------------------ | -------------------------------- | --------------------------- |
+| `SingleProduct`    | Retorna apenas o melhor produto  | `[produto_com_maior_score]` |
+| `MultipleProducts` | Retorna todos produtos ordenados | `[produto1, produto2, ...]` |
+
+#### **🏆 Critérios de Desempate**
+
+Quando dois produtos têm o mesmo score:
+
+```javascript
+.sort((a, b) => b.score - a.score || a.product.id - b.product.id)
+```
+
+1. **Primeiro critério**: Score mais alto
+2. **Segundo critério**: ID menor (produto mais antigo)
+
+#### **📈 Exemplos Práticos**
+
+**Exemplo 1: Recomendação Única**
+
+```javascript
+// Input
+formData = {
+  selectedPreferences: ["Marketing Digital", "Automação"],
+  selectedFeatures: ["Email Marketing", "Analytics"],
+  recommendationType: "SingleProduct"
+}
+
+// Processo
+Produto A: 2 prefs + 1 feat = Score 3 ⭐
+Produto B: 1 pref + 2 feats = Score 3 ⭐
+Produto C: 1 pref + 0 feats = Score 1
+
+// Output: [Produto A] (menor ID em caso de empate)
+```
+
+**Exemplo 2: Múltiplas Recomendações**
+
+```javascript
+// Input
+recommendationType: 'MultipleProducts';
+
+// Output: [Produto A, Produto B, Produto C] (ordenados por score)
+```
+
+#### **✅ Benefícios da Implementação**
+
+**🎯 Precisão:**
+
+- Algoritmo baseado em correspondência exata
+- Pontuação justa considerando preferências E funcionalidades
+- Tratamento de empates consistente
+
+**⚡ Performance:**
+
+- Algoritmo O(n\*m) onde n=produtos, m=critérios
+- Filtragem eficiente eliminando produtos irrelevantes
+- Ordenação otimizada com critério de desempate
+
+**🔧 Flexibilidade:**
+
+- Suporte a diferentes tipos de recomendação
+- Normalização robusta de strings
+- Fácil extensão para novos critérios
+
+**🧪 Testabilidade:**
+
+- Função pura sem efeitos colaterais
+- Entrada e saída bem definidas
+- Lógica isolada e determinística
+
+#### **🔮 Possíveis Extensões**
+
+```javascript
+// Futuras melhorias possíveis:
+
+// 1. Pesos diferentes para preferências vs funcionalidades
+const score = prefMatches * 2 + featMatches * 1;
+
+// 2. Scoring mais sofisticado
+const score = Math.sqrt(prefMatches * featMatches); // Relevância cruzada
+
+// 3. Filtros avançados
+const filtered = scored.filter(({ score, product }) => score > minThreshold && product.available);
+
+// 4. Personalização por usuário
+const personalizedScore = calculatePersonalizedScore(product, userProfile, baseScore);
+```
+
+#### **📋 Conformidade com Critérios de Aceite**
+
+| Critério                                        | Status | Implementação                        |
+| ----------------------------------------------- | ------ | ------------------------------------ |
+| ✅ Receber preferências via formulário          | ✅     | `selectedPreferences[]`              |
+| ✅ Retornar recomendações baseadas em critérios | ✅     | Algoritmo de scoring                 |
+| ✅ SingleProduct retorna apenas 1 produto       | ✅     | `[sorted[0].product]`                |
+| ✅ MultipleProducts retorna lista               | ✅     | `sorted.map(entry => entry.product)` |
+| ✅ Tratamento de empates                        | ✅     | Ordenação por ID                     |
+| ✅ Diferentes tipos de preferências             | ✅     | Normalização flexível                |
+| ✅ Modular e extensível                         | ✅     | Service pattern isolado              |
+
+### **1.6. Serviço de Recomendação com Strategy Pattern**
 
 **📁 Arquivo:** `src/services/recommendation.service.js`
 
