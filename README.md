@@ -11,8 +11,6 @@
 
 _Desenvolvido com arquitetura moderna, princípios SOLID e Tailwind CSS_
 
-[🎯 Demo](#demo) • [🛠️ Instalação](#instalação) • [📖 Documentação](#documentação) • [🧪 Testes](#testes)
-
 </div>
 
 ---
