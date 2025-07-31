@@ -1,12 +1,51 @@
-// getRecommendations.js
-
 const getRecommendations = (
-  formData = { selectedPreferences: [], selectedFeatures: [] },
-  products
+  formData = {
+    selectedPreferences: [],
+    selectedFeatures: [],
+    recommendationType: 'SingleProduct',
+  },
+  products = []
 ) => {
-  /**
-   * Crie aqui a lógica para retornar os produtos recomendados.
-   */
+  const {
+    selectedPreferences = [],
+    selectedFeatures = [],
+    recommendationType = 'SingleProduct',
+  } = formData;
+
+  // normaliza o type
+  const type = recommendationType.trim().toLowerCase();
+  const isSingle =
+    type === 'singleproduct' ||
+    type === 'produto único' ||
+    type === 'produto unico';
+
+  // calcula score
+  const scored = products.map((product) => {
+    const prefMatches = product.preferences.filter((pref) =>
+      selectedPreferences.some(
+        (sel) => sel.trim().toLowerCase() === pref.trim().toLowerCase()
+      )
+    ).length;
+
+    const featMatches = product.features.filter((feat) =>
+      selectedFeatures.some(
+        (sel) => sel.trim().toLowerCase() === feat.trim().toLowerCase()
+      )
+    ).length;
+
+    return { product, score: prefMatches + featMatches };
+  });
+
+  // filtra score>0 e ordena desc (maior score primeiro)
+  const sorted = scored
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score || a.product.id - b.product.id);
+
+  if (isSingle) {
+    return sorted.length > 0 ? [sorted[0].product] : [];
+  }
+  return sorted.map((entry) => entry.product);
 };
 
-export default { getRecommendations };
+const recommendationService = { getRecommendations };
+export default recommendationService;
