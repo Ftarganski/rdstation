@@ -64,30 +64,30 @@ O **RD Station Recommendation System** é uma aplicação web moderna desenvolvi
 
 ```
 src/
-├── 📁 constants/           # Configurações centralizadas
-│   └── formConstants.js    # Tipos, validações, mensagens
-├── 📁 utils/              # Utilitários reutilizáveis
-│   └── formValidation.js   # Funções puras de validação
-├── 📁 hooks/              # Hooks customizados
-│   ├── useMultipleSelection.js  # Seleção múltipla genérica
-│   ├── useSingleSelection.js    # Seleção única genérica
-│   └── useProducts.js           # Gerenciamento de produtos
+├── 📁 constants/          			# Configurações centralizadas
+│   └── formConstants.js    			# Tipos, validações, mensagens
+├── 📁 utils/              			# Utilitários reutilizáveis
+│   └── formValidation.js   			# Funções puras de validação
+├── 📁 hooks/              			# Hooks customizados
+│   ├── useMultipleSelection.js  		# Seleção múltipla genérica
+│   ├── useSingleSelection.js    		# Seleção única genérica
+│   └── useProducts.js           		# Gerenciamento de produtos
 ├── 📁 components/
-│   ├── 📁 shared/         # Componentes reutilizáveis
-│   │   ├── StateComponents.jsx  # Loading, Error, Empty states
-│   │   └── Input.jsx           # Input genérico acessível
-│   ├── 📁 Form/           # Sistema de formulário
-│   │   ├── RecommendationForm.jsx      # Formulário principal
+│   ├── 📁 shared/         			# Componentes reutilizáveis
+│   │   ├── StateComponents.jsx  		# Loading, Error, Empty states
+│   │   └── Input.jsx           		# Input genérico acessível
+│   ├── 📁 Form/				# Sistema de formulário
+│   │   ├── RecommendationForm.jsx      	# Formulário principal
 │   │   ├── Fields/
-│   │   │   ├── PreferencesField.jsx    # Campo de preferências
-│   │   │   ├── FeaturesField.jsx       # Campo de funcionalidades
-│   │   │   └── RecommendationTypeField.jsx # Campo tipo recomendação
+│   │   │   ├── PreferencesField.jsx    	# Campo de preferências
+│   │   │   ├── FeaturesField.jsx       	# Campo de funcionalidades
+│   │   │   └── RecommendationTypeField.jsx 	# Campo tipo recomendação
 │   │   └── SubmitButton/
-│   │       └── SubmitButton.jsx        # Botão inteligente
+│   │       └── SubmitButton.jsx        	# Botão inteligente
 │   └── 📁 RecommendationList/
-│       └── RecommendationList.jsx      # Lista de resultados
+│       └── RecommendationList.jsx      	# Lista de resultados
 └── 📁 services/
-    └── recommendation.service.js       # Lógica de negócio
+    └── recommendation.service.js       	# Lógica de negócio
 ```
 
 #### **🎯 Princípios Aplicados**
