@@ -23,6 +23,7 @@ export { default as Input } from './shared/Input';
 export { default as Modal } from './shared/Modal';
 export { default as RecommendationContent } from './shared/RecommendationContent';
 export { default as ScrollToTop } from './shared/ScrollToTop';
+export { default as SectionHeader } from './shared/SectionHeader';
 export { EmptyState, ErrorState, LoadingState } from './shared/StateComponents';
 export { default as StatsCards } from './shared/StatsCards';
 export { default as ThemeSwitch } from './shared/ThemeSwitch';

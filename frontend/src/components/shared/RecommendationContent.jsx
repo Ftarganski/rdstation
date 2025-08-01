@@ -9,6 +9,7 @@ import {
   RecommendationList,
   StatsCards,
 } from "@/components";
+import { FileText } from "lucide-react";
 import PropTypes from "prop-types";
 
 const RecommendationContent = ({
@@ -54,7 +55,9 @@ const RecommendationContent = ({
   if (recommendations.length === 0) {
     return (
       <div className="text-center py-8">
-        <div className="text-rd-gray text-5xl mb-4">📋</div>
+        <div className="flex justify-center mb-4">
+          <FileText className="w-16 h-16 text-rd-gray" strokeWidth={1} />
+        </div>
         <h3 className="text-lg font-medium text-rd-blue-dark mb-2">
           Nenhuma recomendação ainda
         </h3>

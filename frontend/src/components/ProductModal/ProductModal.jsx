@@ -148,19 +148,17 @@ const ProductModal = ({
 
         {/* Call to Action */}
         <div className="pt-4 border-t border-rd-gray">
-          <div className="bg-gradient-to-r from-rd-sky-light to-rd-cyan-light p-4 rounded-lg">
-            <div className="flex items-start gap-3">
-              <TrendingUp className="w-6 h-6 text-rd-blue flex-shrink-0" />
-              <div>
-                <h4 className="font-semibold text-rd-blue-dark mb-1">
-                  Interessado em {product.name}?
-                </h4>
-                <p className="text-sm text-rd-blue-dark">
-                  Entre em contato com nossa equipe para saber mais sobre este
-                  produto e como ele pode atender às suas necessidades
-                  específicas.
-                </p>
-              </div>
+          <div className="bg-gradient-to-r from-rd-sky-light to-rd-cyan-light p-4 rounded-lg flex items-start gap-3">
+            <TrendingUp className="w-6 h-6 text-rd-blue flex-shrink-0" />
+            <div>
+              <h4 className="font-semibold text-rd-blue-dark mb-1">
+                Interessado em {product.name}?
+              </h4>
+              <p className="text-sm text-rd-blue-dark">
+                Entre em contato com nossa equipe para saber mais sobre este
+                produto e como ele pode atender às suas necessidades
+                específicas.
+              </p>
             </div>
           </div>
         </div>

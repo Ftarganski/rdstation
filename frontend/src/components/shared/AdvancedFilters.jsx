@@ -3,7 +3,14 @@
  * Permite filtrar e ordenar resultados de forma intuitiva
  */
 
-import { Filter, Search, SortAsc, SortDesc, X } from "lucide-react";
+import {
+  ChevronDown,
+  Filter,
+  Search,
+  SortAsc,
+  SortDesc,
+  X,
+} from "lucide-react";
 import PropTypes from "prop-types";
 import { memo, useState } from "react";
 
@@ -108,26 +115,23 @@ const AdvancedFilters = memo(
                 <label className="block text-sm font-medium text-rd-blue-dark mb-2">
                   Categoria
                 </label>
-                <select
-                  value={filters.category}
-                  onChange={(e) =>
-                    handleFilterChange("category", e.target.value)
-                  }
-                  className="w-full px-3 pr-8 py-2 border border-rd-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-rd-blue focus:border-transparent transition-all appearance-none bg-white"
-                  style={{
-                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23949494' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
-                    backgroundPosition: "right 0.75rem center",
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "1rem",
-                  }}
-                >
-                  <option value="">Todas as categorias</option>
-                  {availableCategories.map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
+                <div className="relative">
+                  <select
+                    value={filters.category}
+                    onChange={(e) =>
+                      handleFilterChange("category", e.target.value)
+                    }
+                    className="w-full px-3 pr-8 py-2 border border-rd-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-rd-blue focus:border-transparent transition-all appearance-none bg-white"
+                  >
+                    <option value="">Todas as categorias</option>
+                    {availableCategories.map((category) => (
+                      <option key={category} value={category}>
+                        {category}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-rd-gray pointer-events-none" />
+                </div>
               </div>
 
               {/* Ordenação */}
@@ -136,23 +140,20 @@ const AdvancedFilters = memo(
                   Ordenar por
                 </label>
                 <div className="flex gap-1">
-                  <select
-                    value={filters.sortBy}
-                    onChange={(e) =>
-                      handleSortChange(e.target.value, filters.sortOrder)
-                    }
-                    className="flex-1 px-3 pr-8 py-2 border border-rd-gray rounded-l-lg focus:outline-none focus:ring-2 focus:ring-rd-blue focus:border-transparent transition-all appearance-none bg-white"
-                    style={{
-                      backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23949494' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
-                      backgroundPosition: "right 0.75rem center",
-                      backgroundRepeat: "no-repeat",
-                      backgroundSize: "1rem",
-                    }}
-                  >
-                    <option value="ranking">Ranking</option>
-                    <option value="name">Nome</option>
-                    <option value="category">Categoria</option>
-                  </select>
+                  <div className="relative flex-1">
+                    <select
+                      value={filters.sortBy}
+                      onChange={(e) =>
+                        handleSortChange(e.target.value, filters.sortOrder)
+                      }
+                      className="w-full px-3 pr-8 py-2 border border-rd-gray rounded-l-lg focus:outline-none focus:ring-2 focus:ring-rd-blue focus:border-transparent transition-all appearance-none bg-white"
+                    >
+                      <option value="ranking">Ranking</option>
+                      <option value="name">Nome</option>
+                      <option value="category">Categoria</option>
+                    </select>
+                    <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-rd-gray pointer-events-none" />
+                  </div>
                   <button
                     onClick={() =>
                       handleSortChange(
