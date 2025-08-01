@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:3001';
+const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 const getProducts = async () => {
   try {
@@ -8,6 +8,12 @@ const getProducts = async () => {
     return response.data;
   } catch (error) {
     console.error('Erro ao obter os produtos:', error);
+    console.error('Error details:', {
+      message: error.message,
+      status: error.response?.status,
+      data: error.response?.data,
+      url: `${baseURL}/products`,
+    });
     throw error;
   }
 };

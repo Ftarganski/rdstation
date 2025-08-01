@@ -5,6 +5,7 @@ import { defineConfig } from 'vite';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -23,7 +24,9 @@ export default defineConfig({
   },
   build: {
     outDir: 'build',
-    sourcemap: true,
+    sourcemap: false,
+    emptyOutDir: true,
+    assetsDir: 'assets',
     rollupOptions: {
       output: {
         manualChunks: {
