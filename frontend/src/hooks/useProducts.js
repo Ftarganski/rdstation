@@ -45,7 +45,11 @@ const useProducts = () => {
       console.log('É array?', Array.isArray(productsData));
 
       if (!Array.isArray(productsData)) {
-        throw new Error(`Formato de dados inválido recebido da API. Recebido: ${typeof productsData}. Dados: ${JSON.stringify(productsData)}`);
+        throw new Error(
+          `Formato de dados inválido recebido da API. Recebido: ${typeof productsData}. Dados: ${JSON.stringify(
+            productsData
+          )}`
+        );
       }
 
       setProducts(productsData);

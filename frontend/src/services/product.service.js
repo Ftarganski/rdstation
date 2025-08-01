@@ -15,7 +15,7 @@ const getProducts = async () => {
       message: error.message,
       status: error.response?.status,
       data: error.response?.data,
-      url: `${baseURL}/products`
+      url: `${baseURL}/products`,
     });
     throw error;
   }
