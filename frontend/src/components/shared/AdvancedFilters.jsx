@@ -21,9 +21,8 @@ const AdvancedFilters = memo(
     const [filters, setFilters] = useState({
       search: "",
       category: "",
-      minScore: 0,
-      sortBy: "score",
-      sortOrder: "desc",
+      sortBy: "ranking",
+      sortOrder: "asc",
     });
 
     const handleFilterChange = (key, value) => {
@@ -42,16 +41,14 @@ const AdvancedFilters = memo(
       const clearedFilters = {
         search: "",
         category: "",
-        minScore: 0,
-        sortBy: "score",
-        sortOrder: "desc",
+        sortBy: "ranking",
+        sortOrder: "asc",
       };
       setFilters(clearedFilters);
       onFiltersChange?.(clearedFilters);
     };
 
-    const hasActiveFilters =
-      filters.search || filters.category || filters.minScore > 0;
+    const hasActiveFilters = filters.search || filters.category;
 
     return (
       <div className={`${className}`} data-testid={testId}>
@@ -86,7 +83,7 @@ const AdvancedFilters = memo(
         {/* Painel de Filtros */}
         {isExpanded && (
           <div className="bg-rd-white border border-rd-gray rounded-lg p-4 space-y-4 slide-up">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {/* Busca por Texto */}
               <div>
                 <label className="block text-sm font-medium text-rd-blue-dark mb-2">
@@ -133,23 +130,6 @@ const AdvancedFilters = memo(
                 </select>
               </div>
 
-              {/* Score Mínimo */}
-              <div>
-                <label className="block text-sm font-medium text-rd-blue-dark mb-2">
-                  Score Mínimo: {filters.minScore}
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="10"
-                  value={filters.minScore}
-                  onChange={(e) =>
-                    handleFilterChange("minScore", parseInt(e.target.value))
-                  }
-                  className="w-full h-2 bg-rd-gray-light rounded-lg appearance-none cursor-pointer slider"
-                />
-              </div>
-
               {/* Ordenação */}
               <div>
                 <label className="block text-sm font-medium text-rd-blue-dark mb-2">
@@ -169,7 +149,7 @@ const AdvancedFilters = memo(
                       backgroundSize: "1rem",
                     }}
                   >
-                    <option value="score">Score</option>
+                    <option value="ranking">Ranking</option>
                     <option value="name">Nome</option>
                     <option value="category">Categoria</option>
                   </select>
@@ -203,20 +183,20 @@ const AdvancedFilters = memo(
               <div className="flex flex-wrap gap-2">
                 {[
                   {
-                    label: "Score Alto (8+)",
-                    action: () => handleFilterChange("minScore", 8),
+                    label: "Melhor Ranking",
+                    action: () => handleSortChange("ranking", "asc"),
                   },
                   {
-                    label: "Score Médio (5+)",
-                    action: () => handleFilterChange("minScore", 5),
-                  },
-                  {
-                    label: "Mais Relevantes",
-                    action: () => handleSortChange("score", "desc"),
+                    label: "Pior Ranking",
+                    action: () => handleSortChange("ranking", "desc"),
                   },
                   {
                     label: "A-Z",
                     action: () => handleSortChange("name", "asc"),
+                  },
+                  {
+                    label: "Z-A",
+                    action: () => handleSortChange("name", "desc"),
                   },
                 ].map((quickFilter) => (
                   <button

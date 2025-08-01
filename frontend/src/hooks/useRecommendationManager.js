@@ -14,16 +14,29 @@ export const useRecommendationManager = (products) => {
   const [filters, setFilters] = useState({
     search: '',
     category: '',
-    minScore: 0,
-    sortBy: 'score',
-    sortOrder: 'desc',
+    sortBy: 'ranking',
+    sortOrder: 'asc',
   });
 
   // Função para filtrar recomendações (memoizada para performance)
   const applyFilters = useCallback((recommendations, filters) => {
     if (!recommendations || recommendations.length === 0) return [];
 
-    let filtered = [...recommendations];
+    // Primeiro, calcular o ranking baseado no score
+    const recommendationsWithRanking = [...recommendations]
+      .sort((a, b) => {
+        if (b.score !== a.score) {
+          return (b.score || 0) - (a.score || 0);
+        }
+        // Em caso de empate no score, ID maior (mais novo) fica em primeiro
+        return (b.id || 0) - (a.id || 0);
+      })
+      .map((rec, index) => ({
+        ...rec,
+        ranking: index + 1,
+      }));
+
+    let filtered = [...recommendationsWithRanking];
 
     // Filtro por busca textual
     if (filters.search && filters.search.trim()) {
@@ -40,16 +53,15 @@ export const useRecommendationManager = (products) => {
       filtered = filtered.filter((rec) => rec.category === filters.category);
     }
 
-    // Filtro por score mínimo
-    if (filters.minScore > 0) {
-      filtered = filtered.filter((rec) => (rec.score || 0) >= filters.minScore);
-    }
-
     // Ordenação
     filtered.sort((a, b) => {
       let aValue, bValue;
 
       switch (filters.sortBy) {
+        case 'ranking':
+          aValue = a.ranking || 999;
+          bValue = b.ranking || 999;
+          break;
         case 'score':
           aValue = a.score || 0;
           bValue = b.score || 0;
@@ -63,10 +75,12 @@ export const useRecommendationManager = (products) => {
           bValue = b.category || '';
           break;
         default:
-          aValue = a.score || 0;
-          bValue = b.score || 0;
+          aValue = a.ranking || 999;
+          bValue = b.ranking || 999;
       }
 
+      // Para ranking: asc = melhor ranking primeiro (1,2,3...), desc = pior ranking primeiro (10,9,8...)
+      // Para outros: asc = crescente, desc = decrescente
       if (filters.sortOrder === 'asc') {
         return aValue > bValue ? 1 : -1;
       } else {
@@ -112,8 +126,21 @@ export const useRecommendationManager = (products) => {
           formData,
           products
         );
-        setRecommendations(result);
-        setFilteredRecommendations(result);
+
+        // Ordenar inicialmente por ranking (melhor score primeiro)
+        const sortedResult = result.sort((a, b) => {
+          if (b.score !== a.score) {
+            return (b.score || 0) - (a.score || 0);
+          }
+          // Em caso de empate no score, ID maior (mais novo) fica em primeiro
+          return (b.id || 0) - (a.id || 0);
+        });
+
+        setRecommendations(sortedResult);
+
+        // Aplicar filtros padrão (ranking)
+        const filtered = applyFilters(sortedResult, filters);
+        setFilteredRecommendations(filtered);
 
         if (result.length === 0) {
           setError(
@@ -129,7 +156,7 @@ export const useRecommendationManager = (products) => {
         setIsProcessing(false);
       }
     },
-    [products]
+    [products, applyFilters, filters]
   );
 
   /**

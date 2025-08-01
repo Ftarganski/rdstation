@@ -17,6 +17,7 @@ const RecommendationItem = memo(
   ({
     recommendation,
     index,
+    originalRanking,
     onSelect,
     onCardClick,
     isSelected = false,
@@ -121,8 +122,24 @@ const RecommendationItem = memo(
 
           <div className="ml-4 flex items-center">
             <div className="text-right">
+              {/* Score do produto */}
+              {recommendation.score !== undefined && (
+                <div className="mb-2">
+                  <div className="text-xs text-rd-gray">Score</div>
+                  <div className="flex items-center gap-1">
+                    <div className="text-lg font-bold text-rd-blue">
+                      {recommendation.score}
+                    </div>
+                    <span className="text-xs text-rd-gray">/6</span>
+                  </div>
+                </div>
+              )}
+
+              {/* Ranking */}
               <div className="text-sm text-rd-gray">Ranking</div>
-              <div className="text-lg font-bold text-rd-blue">#{index + 1}</div>
+              <div className="text-lg font-bold text-rd-blue">
+                #{originalRanking}
+              </div>
             </div>
           </div>
         </div>
@@ -209,6 +226,7 @@ const RecommendationList = memo(
               key={recommendation.id || index}
               recommendation={recommendation}
               index={index}
+              originalRanking={recommendation.ranking || index + 1}
               onSelect={onItemSelect}
               onCardClick={onItemCardClick}
               isSelected={selectedItem?.id === recommendation.id}
@@ -240,6 +258,7 @@ RecommendationItem.propTypes = {
     description: PropTypes.string,
     preferences: PropTypes.array,
     features: PropTypes.array,
+    score: PropTypes.number,
   }).isRequired,
   index: PropTypes.number.isRequired,
   onSelect: PropTypes.func,
