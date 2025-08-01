@@ -37,9 +37,10 @@ const getRecommendations = (
   });
 
   // filtra score>0 e ordena desc (maior score primeiro)
+  // Em caso de empate, retorna o produto com ID mais alto (mais recente)
   const sorted = scored
     .filter(({ score }) => score > 0)
-    .sort((a, b) => b.score - a.score || a.product.id - b.product.id);
+    .sort((a, b) => b.score - a.score || b.product.id - a.product.id);
 
   if (isSingle) {
     return sorted.length > 0 ? [sorted[0].product] : [];

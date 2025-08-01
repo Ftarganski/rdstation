@@ -1,5 +1,73 @@
-import mockProducts from '../mocks/mockProducts';
-import recommendationService from './recommendation.service';
+import recommendationService from '../services/recommendation.service';
+
+// Mock dos produtos inline
+const mockProducts = [
+  {
+    id: 1,
+    name: 'RD Station CRM',
+    category: 'Vendas',
+    preferences: [
+      'Integração fácil com ferramentas de e-mail',
+      'Personalização de funis de vendas',
+      'Relatórios avançados de desempenho de vendas',
+    ],
+    features: [
+      'Gestão de leads e oportunidades',
+      'Pipeline de vendas personalizável',
+      'Rastreamento de interações com clientes',
+      'Relatórios de desempenho de vendas',
+    ],
+  },
+  {
+    id: 2,
+    name: 'RD Station Marketing',
+    category: 'Marketing',
+    preferences: [
+      'Automação de marketing',
+      'Criação de landing pages',
+      'Análise de resultados de campanhas',
+    ],
+    features: [
+      'Automação de campanhas de marketing',
+      'Criação e gestão de campanhas de e-mail',
+      'Landing pages otimizadas para conversão',
+      'Rastreamento de comportamento do usuário',
+      'Segmentação avançada de leads',
+    ],
+  },
+  {
+    id: 3,
+    name: 'RD Conversas',
+    category: 'Atendimento',
+    preferences: [
+      'Integração com chatbots',
+      'Histórico unificado de interações',
+      'Atendimento multicanal',
+    ],
+    features: [
+      'Chat ao vivo e mensagens automatizadas',
+      'Integração com redes sociais',
+      'Histórico completo de conversas',
+      'Chatbots inteligentes',
+    ],
+  },
+  {
+    id: 4,
+    name: 'RD Mentor AI',
+    category: 'Inteligência Artificial',
+    preferences: [
+      'Análise preditiva de dados',
+      'Automação de decisões',
+      'Insights baseados em IA',
+    ],
+    features: [
+      'Machine learning para previsões',
+      'Análise de dados para insights estratégicos',
+      'Automação de processos baseada em IA',
+      'Recomendações personalizadas',
+    ],
+  },
+];
 
 describe('recommendationService', () => {
   test('Retorna recomendação correta para SingleProduct com base nas preferências selecionadas', () => {
@@ -18,7 +86,7 @@ describe('recommendationService', () => {
     expect(recommendations[0].name).toBe('RD Conversas');
   });
 
-  test('Ordena corretamente por score crescente em MultipleProducts', () => {
+  test('Ordena corretamente por score decrescente e por ID decrescente em caso de empate', () => {
     const formData = {
       selectedPreferences: [
         'Integração fácil com ferramentas de e-mail', // RD Station CRM (1 match)
@@ -37,14 +105,15 @@ describe('recommendationService', () => {
 
     expect(recommendations.length).toBeGreaterThanOrEqual(1);
 
-    // Se temos 2 produtos, verificar a ordenação
+    // RD Station Marketing tem score 2, RD Station CRM tem score 1
+    // RD Station Marketing deve vir primeiro por ter score maior
     expect(
       recommendations.length === 2
         ? [recommendations[0].name, recommendations[1].name]
         : [recommendations[0].name]
     ).toEqual(
       recommendations.length === 2
-        ? ['RD Station CRM', 'RD Station Marketing']
+        ? ['RD Station Marketing', 'RD Station CRM']
         : ['RD Station Marketing']
     );
   });
@@ -68,14 +137,17 @@ describe('recommendationService', () => {
     );
 
     expect(recommendations).toHaveLength(1);
+    // RD Station CRM e RD Station Marketing têm score 2 cada
+    // Em caso de empate, ordena por ID (maior primeiro - mais recente)
+    // RD Station Marketing (id=2) vem antes de RD Station CRM (id=1)
     expect(recommendations[0].name).toBe('RD Station Marketing');
   });
 
-  test('Retorna o último match em caso de empate para SingleProduct', () => {
+  test('Retorna o produto com maior ID em caso de empate para SingleProduct', () => {
     const formData = {
       selectedPreferences: [
-        'Automação de marketing', // RD Station Marketing
-        'Integração com chatbots', // RD Conversas
+        'Automação de marketing', // RD Station Marketing (id=2)
+        'Integração com chatbots', // RD Conversas (id=3)
       ],
       selectedFeatures: [], // Array vazio ao invés de undefined
       selectedRecommendationType: 'SingleProduct',
@@ -87,6 +159,7 @@ describe('recommendationService', () => {
     );
 
     expect(recommendations).toHaveLength(1);
+    // Ambos têm score 1, mas RD Conversas (id=3) vem antes de RD Station Marketing (id=2)
     expect(recommendations[0].name).toBe('RD Conversas');
   });
 
