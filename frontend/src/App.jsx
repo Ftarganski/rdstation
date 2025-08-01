@@ -309,12 +309,14 @@ function App() {
           className="fade-in"
         />
 
-        {/* Filtros Avançados */}
-        <AdvancedFilters
-          onFiltersChange={handleFiltersChange}
-          availableCategories={availableCategories}
-          className="fade-in"
-        />
+        {/* Filtros Avançados - só aparece quando há mais de 1 recomendação */}
+        {recommendations.length > 1 && (
+          <AdvancedFilters
+            onFiltersChange={handleFiltersChange}
+            availableCategories={availableCategories}
+            className="fade-in"
+          />
+        )}
 
         {/* Lista de Recomendações */}
         <RecommendationList
