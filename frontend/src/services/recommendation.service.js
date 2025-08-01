@@ -43,9 +43,11 @@ const getRecommendations = (
     .sort((a, b) => b.score - a.score || b.product.id - a.product.id);
 
   if (isSingle) {
-    return sorted.length > 0 ? [sorted[0].product] : [];
+    return sorted.length > 0
+      ? [{ ...sorted[0].product, score: sorted[0].score }]
+      : [];
   }
-  return sorted.map((entry) => entry.product);
+  return sorted.map((entry) => ({ ...entry.product, score: entry.score }));
 };
 
 const recommendationService = { getRecommendations };

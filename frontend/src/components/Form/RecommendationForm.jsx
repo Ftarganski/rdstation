@@ -169,7 +169,7 @@ const RecommendationForm = memo(
     // Estado de loading dos produtos
     if (isLoadingProducts) {
       return (
-        <div className={`max-w-2xl mx-auto ${className}`} data-testid={testId}>
+        <div className={`w-full ${className}`} data-testid={testId}>
           <LoadingState
             message="Carregando opções do formulário..."
             size="medium"
@@ -181,7 +181,7 @@ const RecommendationForm = memo(
     // Estado de erro dos produtos
     if (hasProductsError) {
       return (
-        <div className={`max-w-2xl mx-auto ${className}`} data-testid={testId}>
+        <div className={`w-full ${className}`} data-testid={testId}>
           <ErrorState
             title="Erro ao carregar dados"
             message={productsErrorMessage}
@@ -194,42 +194,52 @@ const RecommendationForm = memo(
 
     return (
       <form
-        className={`max-w-2xl mx-auto p-6 rounded-lg space-y-6 ${className}`}
+        className={`w-full p-6 rounded-lg space-y-6 ${className}`}
         onSubmit={handleSubmit}
         noValidate
         data-testid={testId}
       >
-        <div className="space-y-6">
-          <PreferencesField
-            preferences={availablePreferences}
-            initialSelected={formData.selectedPreferences}
-            onChange={handlePreferencesChange}
-            disabled={disabled || isSubmitting}
-            required
-            className={validationErrors.preferences ? "border-rd-error" : ""}
-          />
+        {/* Grid de 2 colunas para campos principais */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Coluna 1: Preferências */}
+          <div className="space-y-4">
+            <PreferencesField
+              preferences={availablePreferences}
+              initialSelected={formData.selectedPreferences}
+              onChange={handlePreferencesChange}
+              disabled={disabled || isSubmitting}
+              required
+              className={validationErrors.preferences ? "border-rd-error" : ""}
+            />
 
-          {validationErrors.preferences && (
-            <p className="text-rd-error text-sm mt-1" role="alert">
-              {validationErrors.preferences}
-            </p>
-          )}
+            {validationErrors.preferences && (
+              <p className="text-rd-error text-sm mt-1" role="alert">
+                {validationErrors.preferences}
+              </p>
+            )}
+          </div>
 
-          <FeaturesField
-            features={availableFeatures}
-            initialSelected={formData.selectedFeatures}
-            onChange={handleFeaturesChange}
-            disabled={disabled || isSubmitting}
-            required
-            className={validationErrors.features ? "border-rd-error" : ""}
-          />
+          {/* Coluna 2: Funcionalidades */}
+          <div className="space-y-4">
+            <FeaturesField
+              features={availableFeatures}
+              initialSelected={formData.selectedFeatures}
+              onChange={handleFeaturesChange}
+              disabled={disabled || isSubmitting}
+              required
+              className={validationErrors.features ? "border-rd-error" : ""}
+            />
 
-          {validationErrors.features && (
-            <p className="text-rd-error text-sm mt-1" role="alert">
-              {validationErrors.features}
-            </p>
-          )}
+            {validationErrors.features && (
+              <p className="text-rd-error text-sm mt-1" role="alert">
+                {validationErrors.features}
+              </p>
+            )}
+          </div>
+        </div>
 
+        {/* Seção do tipo de recomendação - largura completa */}
+        <div className="space-y-4">
           <RecommendationTypeField
             initialValue={formData.selectedRecommendationType}
             onChange={handleRecommendationTypeChange}
@@ -247,19 +257,20 @@ const RecommendationForm = memo(
           )}
         </div>
 
-        <div className="flex gap-4 pt-6 border-t border-rd-gray">
+        {/* Botões na parte inferior */}
+        <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-rd-gray">
           <SubmitButton
             text={isSubmitting ? "Processando..." : "Obter Recomendações"}
             disabled={disabled || isSubmitting}
             isLoading={isSubmitting}
-            className="flex-1"
+            className="flex-1 button-scale"
           />
 
           <button
             type="button"
             onClick={handleReset}
             disabled={disabled || isSubmitting}
-            className="flex-1 bg-rd-gray text-rd-white py-3 px-6 rounded-lg font-medium hover:bg-rd-blue-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 bg-rd-gray text-rd-white py-3 px-6 rounded-lg font-medium hover:bg-rd-blue-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed button-scale"
             data-testid="reset-button"
           >
             Limpar Formulário
