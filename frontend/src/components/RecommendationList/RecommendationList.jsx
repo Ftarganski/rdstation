@@ -5,7 +5,7 @@
  */
 
 import { EmptyState, ErrorState, LoadingState } from "@/components";
-import { Archive, Eye } from "lucide-react";
+import { Archive, Eye, Lightbulb } from "lucide-react";
 import PropTypes from "prop-types";
 import { memo } from "react";
 
@@ -220,8 +220,9 @@ const RecommendationList = memo(
 
         {recommendations.length > 1 && (
           <div className="mt-6 p-4 bg-rd-gray-light rounded-lg">
-            <p className="text-sm text-rd-gray text-center">
-              💡 Os produtos estão ordenados por relevância baseada nas suas
+            <p className="text-sm text-rd-gray text-center flex items-center justify-center gap-2">
+              <Lightbulb className="w-8 h-8 text-rd-cyan" />
+              Os produtos estão ordenados por relevância baseada nas suas
               preferências e funcionalidades selecionadas.
             </p>
           </div>
