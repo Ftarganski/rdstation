@@ -5,6 +5,7 @@
 
 import PropTypes from "prop-types";
 import { memo } from "react";
+import ThemeSwitch from "./ThemeSwitch";
 
 /**
  * Header principal da aplicação
@@ -38,12 +39,17 @@ const Header = memo(
 
             {/* Título e Descrição */}
             <div className="flex-1 min-w-0">
-              <h1 className="text-2xl lg:text-3xl font-bold text-rd-blue-dark mb-1 truncate">
+              <h1 className="text-2xl lg:text-3xl font-bold text-center text-rd-blue-dark mb-1 truncate">
                 {title}
               </h1>
-              <p className="text-sm lg:text-base text-rd-blue-dark opacity-80 leading-tight">
+              <p className="text-sm lg:text-base text-rd-blue-dark text-center opacity-80 leading-tight">
                 {description}
               </p>
+            </div>
+
+            {/* Theme Switch */}
+            <div className="flex-shrink-0">
+              <ThemeSwitch />
             </div>
           </div>
         </div>

@@ -21,3 +21,4 @@ export { default as Header } from './shared/Header';
 export { default as Input } from './shared/Input';
 export { default as Modal } from './shared/Modal';
 export { EmptyState, ErrorState, LoadingState } from './shared/StateComponents';
+export { default as ThemeSwitch } from './shared/ThemeSwitch';
