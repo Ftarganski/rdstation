@@ -342,7 +342,7 @@ GET /products
 
 - 📧 Email: [dev@targanski.com](mailto:dev@targanski.com)
 - 💼 LinkedIn: [Ftarganski](https://www.linkedin.com/in/targanski/)
-- 🐱 GitHub: [@Ftarganski](https://github.com/Ftarganski)
+- 🐱 GitHub: [Ftarganski](https://github.com/Ftarganski)
 
 ---
 
