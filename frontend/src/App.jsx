@@ -88,10 +88,10 @@ function App() {
   // Estado de erro dos produtos
   if (hasProductsError) {
     return (
-      <ErrorState 
+      <ErrorState
         layout="app"
         title="Erro ao carregar o sistema"
-        message={productsErrorMessage} 
+        message={productsErrorMessage}
         onRetry={handleRetryData}
         retryText="Recarregar Sistema"
       />
