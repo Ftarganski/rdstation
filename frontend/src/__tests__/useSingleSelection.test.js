@@ -89,7 +89,7 @@ describe('useSingleSelection Hook', () => {
   test('deve verificar se um valor está selecionado', () => {
     const selectedValue = 'SingleProduct';
     const otherValue = 'MultipleProducts';
-    
+
     const { result } = renderHook(() => useSingleSelection(selectedValue));
 
     expect(result.current.isSelected(selectedValue)).toBe(true);

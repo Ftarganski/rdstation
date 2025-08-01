@@ -380,7 +380,7 @@ const getRecommendations = (formData, products, strategy = new BalancedScoring()
 
 	return scored
 		.filter(({ score }) => score > 0)
-		.sort((a, b) => b.score - a.score) // Ordenação correta (desc)
+		.sort((a, b) => b.score - a.score)
 		.map(({ product }) => product);
 };
 ```
@@ -654,15 +654,17 @@ File sizes after gzip:
 
 ```
 🎯 RDSTATION RECOMMENDATION SYSTEM
-├── 📁 constants/          # Configurações centralizadas
-├── 📁 utils/             # Utilitários reutilizáveis
-├── 📁 hooks/             # Hooks genéricos (DRY)
+├── 📁 _mocks_/                 # Mocks dos testes
+├── 📁 _tests_/                 # Testes do sistema
 ├── 📁 components/
-│   ├── 📁 shared/        # UI reutilizável (SOLID)
-│   ├── 📁 Form/          # Formulário modular
-│   └── 📁 RecommendationList/
-├── 📁 services/          # Strategy Pattern
-└── 📄 styles.css         # Tailwind + customizações
+│   ├── 📁 shared/              # UI reutilizável (SOLID)
+│   ├── 📁 Form/                # Formulário modular
+│   └── 📁 RecommendationList/  # Retorno das recomendações
+├── 📁 constants/               # Configurações centralizadas
+├── 📁 hooks/                   # Hooks genéricos (DRY)
+├── 📁 services/                # Strategy Pattern
+├── 📁 utils/                   # Utilitários reutilizáveis
+└── 📄 styles.css               # Tailwind + customizações
 ```
 
 ### **🚀 Benefícios para Desenvolvimento**
