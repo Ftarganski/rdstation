@@ -2,8 +2,6 @@
 
 backend/
 frontend/node_modules/
-frontend/src/
-frontend/public/
 frontend/.git/
 frontend/.env.local
 frontend/.env.development
