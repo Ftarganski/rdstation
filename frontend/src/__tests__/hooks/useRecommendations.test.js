@@ -4,11 +4,11 @@
  */
 
 import { act, renderHook } from '@testing-library/react';
-import useRecommendations from '../hooks/useRecommendations';
-import recommendationService from '../services/recommendation.service';
+import useRecommendations from '../../hooks/useRecommendations';
+import recommendationService from '../../services/recommendation.service';
 
 // Mock do serviço de recomendações
-jest.mock('../services/recommendation.service', () => ({
+jest.mock('../../services/recommendation.service', () => ({
   getRecommendations: jest.fn(),
 }));
 

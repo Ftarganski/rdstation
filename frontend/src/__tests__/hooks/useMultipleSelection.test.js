@@ -4,7 +4,7 @@
  */
 
 import { act, renderHook } from '@testing-library/react';
-import useMultipleSelection from '../hooks/useMultipleSelection';
+import useMultipleSelection from '../../hooks/useMultipleSelection';
 
 // Suprimir console.error e console.warn durante os testes
 const originalConsoleError = console.error;

@@ -4,7 +4,7 @@
  */
 
 import { act, renderHook } from '@testing-library/react';
-import useForm from '../hooks/useForm';
+import useForm from '../../hooks/useForm';
 
 // Suprimir console.error e console.warn durante os testes
 const originalConsoleError = console.error;

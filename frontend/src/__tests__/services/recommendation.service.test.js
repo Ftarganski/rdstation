@@ -1,4 +1,4 @@
-import recommendationService from '../services/recommendation.service';
+import recommendationService from '../../services/recommendation.service';
 
 // Suprimir console.error e console.warn durante os testes
 const originalConsoleError = console.error;

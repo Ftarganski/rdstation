@@ -275,10 +275,8 @@ npm test -- --coverage
 ```
 src/
 ├── __tests__/
-│   ├── components/
 │   ├── hooks/
-│   ├── services/
-│   └── utils/
+│   └── services/
 └── setupTests.js
 ```
 

@@ -4,11 +4,11 @@
  */
 
 import { act, renderHook, waitFor } from '@testing-library/react';
-import useProducts from '../hooks/useProducts';
-import getProducts from '../services/product.service';
+import useProducts from '../../hooks/useProducts';
+import getProducts from '../../services/product.service';
 
 // Mock do serviço de produtos
-jest.mock('../services/product.service');
+jest.mock('../../services/product.service.js');
 
 // Suprimir console.error e console.warn durante os testes
 const originalConsoleError = console.error;

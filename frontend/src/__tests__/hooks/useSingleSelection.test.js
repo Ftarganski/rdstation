@@ -4,7 +4,7 @@
  */
 
 import { act, renderHook } from '@testing-library/react';
-import useSingleSelection from '../hooks/useSingleSelection';
+import useSingleSelection from '../../hooks/useSingleSelection';
 
 // Suprimir console.error e console.warn durante os testes
 const originalConsoleError = console.error;
