@@ -219,7 +219,7 @@ function App() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <section>
-            <div className="bg-rd-white rounded-xl shadow-lg p-6 border border-rd-gray">
+            <div className="bg-rd-white rounded-xl shadow-lg p-6 ">
               <header className="border-b border-rd-gray pb-4 mb-6">
                 <h2 className="text-2xl font-semibold text-rd-blue-dark mb-2">
                   Preencha suas Preferências
@@ -239,7 +239,7 @@ function App() {
           </section>
 
           <section>
-            <div className="bg-rd-white rounded-xl shadow-lg p-6 border border-rd-gray">
+            <div className="bg-rd-white rounded-xl shadow-lg p-6 ">
               <header className="border-b border-rd-gray pb-4 mb-6">
                 <h2 className="text-2xl font-semibold text-rd-blue-dark mb-2">
                   Recomendações Personalizadas

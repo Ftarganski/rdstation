@@ -4,10 +4,11 @@
 
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
+import { vi } from 'vitest';
 import { ProductModal } from '../../../components';
 
 describe('ProductModal', () => {
-  const mockOnClose = jest.fn();
+  const mockOnClose = vi.fn();
   const mockProduct = {
     id: 1,
     name: 'RD Station CRM',

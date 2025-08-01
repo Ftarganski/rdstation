@@ -4,12 +4,15 @@
  */
 
 import { act, renderHook } from '@testing-library/react';
+import { vi } from 'vitest';
 import useRecommendations from '../../hooks/useRecommendations';
 import recommendationService from '../../services/recommendation.service';
 
 // Mock do serviço de recomendações
-jest.mock('../../services/recommendation.service', () => ({
-  getRecommendations: jest.fn(),
+vi.mock('../../services/recommendation.service', () => ({
+  default: {
+    getRecommendations: vi.fn(),
+  },
 }));
 
 // Suprimir console.error e console.warn durante os testes
@@ -17,8 +20,8 @@ const originalConsoleError = console.error;
 const originalConsoleWarn = console.warn;
 
 beforeAll(() => {
-  console.error = jest.fn();
-  console.warn = jest.fn();
+  console.error = vi.fn();
+  console.warn = vi.fn();
 });
 
 afterAll(() => {
@@ -53,7 +56,7 @@ const mockRecommendations = [
 
 describe('useRecommendations Hook', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   test('deve inicializar com estado padrão', () => {

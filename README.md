@@ -307,6 +307,46 @@ GET /products
 
 ---
 
+## 🛠️ Stack Tecnológico
+
+### **Frontend**
+
+| Tecnologia | Versão | Descrição |
+|------------|--------|-----------|
+| **React** | 18.2.0 | Biblioteca para interfaces de usuário |
+| **Vite** | 7.0.6 | Build tool moderna e rápida |
+| **Tailwind CSS** | 3.4.0 | Framework CSS utility-first |
+| **Lucide React** | Latest | Biblioteca de ícones moderna e consistente |
+| **Axios** | 1.11.0 | Cliente HTTP para requisições |
+| **PropTypes** | Latest | Validação de propriedades |
+
+### **Desenvolvimento**
+
+| Ferramenta | Versão | Descrição |
+|------------|--------|-----------|
+| **Vitest** | Latest | Framework de testes moderno |
+| **ESLint** | 8.56.0 | Linter JavaScript/React |
+| **PostCSS** | 8.4.34 | Processador CSS |
+| **Autoprefixer** | 10.4.17 | Prefixos CSS automáticos |
+
+### **Backend (Simulado)**
+
+| Tecnologia | Versão | Descrição |
+|------------|--------|-----------|
+| **json-server** | Latest | Mock API REST para desenvolvimento |
+| **Node.js** | 18.3+ | Runtime JavaScript |
+
+### **🎨 Bibliotecas de Design**
+
+- **🎯 Lucide React**: Ícones SVG otimizados e consistentes
+  - Tree-shaking automático (apenas ícones utilizados)
+  - API simples e flexível
+  - Mais de 1.400 ícones disponíveis
+  - Design system coerente
+  - Suporte completo ao TypeScript
+
+---
+
 ## 🤝 Contribuição
 
 ### **🔄 Workflow de Desenvolvimento**
