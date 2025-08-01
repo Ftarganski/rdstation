@@ -18,8 +18,6 @@ export { default as RecommendationList } from './RecommendationList/Recommendati
 
 // Shared components
 export { default as AdvancedFilters } from './shared/AdvancedFilters';
-export { default as AppErrorState } from './shared/AppErrorState';
-export { default as AppLoadingState } from './shared/AppLoadingState';
 export { default as Header } from './shared/Header';
 export { default as Input } from './shared/Input';
 export { default as Modal } from './shared/Modal';

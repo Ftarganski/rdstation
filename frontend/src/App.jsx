@@ -5,9 +5,9 @@
  */
 
 import {
-  AppErrorState,
-  AppLoadingState,
+  ErrorState,
   Header,
+  LoadingState,
   ProductModal,
   RecommendationContent,
   RecommendationForm,
@@ -76,7 +76,9 @@ function App() {
   // Estado de loading inicial dos produtos
   if (isLoadingProducts) {
     return (
-      <AppLoadingState
+      <LoadingState
+        variant="app"
+        size="large"
         message="Carregando produtos disponíveis..."
         description="Aguarde enquanto preparamos o sistema de recomendações para você."
       />
@@ -86,7 +88,13 @@ function App() {
   // Estado de erro dos produtos
   if (hasProductsError) {
     return (
-      <AppErrorState message={productsErrorMessage} onRetry={handleRetryData} />
+      <ErrorState 
+        layout="app"
+        title="Erro ao carregar o sistema"
+        message={productsErrorMessage} 
+        onRetry={handleRetryData}
+        retryText="Recarregar Sistema"
+      />
     );
   }
 
