@@ -110,7 +110,7 @@ const RecommendationItem = memo(
             <div className="mt-3 pt-3 border-t border-rd-gray">
               <button
                 onClick={handleCardClick}
-                className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-rd-blue bg-rd-sky-light hover:bg-rd-cyan-light rounded-md transition-colors duration-200"
+                className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-rd-blue-dark bg-rd-sky-light hover:bg-rd-cyan-light rounded-md transition-colors duration-200"
               >
                 <svg
                   className="w-4 h-4"
@@ -208,7 +208,7 @@ const RecommendationList = memo(
             message={emptyMessage}
             icon={
               <svg
-                className="h-16 w-16 text-gray-400"
+                className="h-16 w-16 text-rd-gray"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -248,8 +248,8 @@ const RecommendationList = memo(
         </div>
 
         {recommendations.length > 1 && (
-          <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-            <p className="text-sm text-gray-600 text-center">
+          <div className="mt-6 p-4 bg-rd-gray-light rounded-lg">
+            <p className="text-sm text-rd-gray text-center">
               💡 Os produtos estão ordenados por relevância baseada nas suas
               preferências e funcionalidades selecionadas.
             </p>

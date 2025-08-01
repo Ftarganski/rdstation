@@ -73,7 +73,7 @@ const FeaturesField = memo(
       <fieldset className={`mb-6 ${className}`} data-testid={testId}>
         <legend className="text-lg font-semibold mb-3 text-rd-blue-dark">
           {title}
-          {required && <span className="text-red-500 ml-1">*</span>}
+          {required && <span className="text-rd-error ml-1">*</span>}
           {selectionCount > 0 && (
             <span className="ml-2 text-sm text-rd-cyan font-normal">
               ({selectionCount} selecionada{selectionCount !== 1 ? "s" : ""})

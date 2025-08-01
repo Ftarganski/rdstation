@@ -66,16 +66,16 @@ export const ErrorState = memo(
   }) => {
     const variantClasses = {
       error: {
-        container: "bg-red-50 border-red-200 text-red-800",
-        title: "text-red-800",
-        message: "text-red-600",
-        button: "bg-red-600 hover:bg-red-700 text-white",
+        container: "bg-rd-error border-rd-error text-rd-error",
+        title: "text-rd-error",
+        message: "text-rd-error",
+        button: "bg-rd-error-solid hover:bg-rd-error-dark text-white",
       },
       warning: {
-        container: "bg-yellow-50 border-yellow-200 text-yellow-800",
-        title: "text-yellow-800",
-        message: "text-yellow-600",
-        button: "bg-yellow-600 hover:bg-yellow-700 text-white",
+        container: "bg-rd-warning border-rd-warning text-rd-warning",
+        title: "text-rd-warning",
+        message: "text-rd-warning",
+        button: "bg-rd-warning-solid hover:bg-rd-warning-dark text-white",
       },
       info: {
         container: "bg-rd-sky-light border-rd-blue text-rd-blue-dark",

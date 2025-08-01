@@ -34,7 +34,7 @@ const SubmitButton = memo(
       success:
         "bg-rd-cyan hover:bg-rd-blue text-rd-white focus:ring-rd-cyan disabled:opacity-60",
       danger:
-        "bg-red-600 hover:bg-red-700 text-white focus:ring-red-500 disabled:bg-red-300",
+        "bg-rd-error-solid hover:bg-rd-error-dark text-white focus:ring-rd-blue disabled:bg-rd-error-light",
     };
 
     const sizeClasses = {

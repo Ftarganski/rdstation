@@ -111,6 +111,54 @@
     border-color: var(--rd-gray);
   }
 
+  /* Error & Warning States */
+  .text-rd-error {
+    color: var(--rd-red);
+  }
+  .text-rd-warning {
+    color: var(--rd-yellow);
+  }
+  .bg-rd-error {
+    background-color: #fef2f2; /* red-50 equivalent */
+  }
+  .bg-rd-warning {
+    background-color: #fffbeb; /* yellow-50 equivalent */
+  }
+  .border-rd-error {
+    border-color: #fecaca; /* red-200 equivalent */
+  }
+  .border-rd-warning {
+    border-color: #fde68a; /* yellow-200 equivalent */
+  }
+  .bg-rd-error-solid {
+    background-color: var(--rd-red);
+  }
+  .bg-rd-warning-solid {
+    background-color: var(--rd-yellow);
+  }
+  .hover\:bg-rd-error-dark:hover {
+    background-color: #dc2626; /* red-600 equivalent */
+  }
+  .hover\:bg-rd-warning-dark:hover {
+    background-color: #d97706; /* yellow-600 equivalent */
+  }
+
+  /* Focus states */
+  .focus\:ring-rd-blue:focus {
+    --tw-ring-color: var(--rd-blue);
+  }
+  .focus\:ring-rd-cyan:focus {
+    --tw-ring-color: var(--rd-cyan);
+  }
+
+  /* Disabled states */
+  .disabled\:bg-rd-error-light:disabled {
+    background-color: #fecaca; /* red-300 equivalent */
+  }
+  .disabled\:bg-rd-gray-light:disabled {
+    background-color: var(--rd-gray-light);
+  }
+
   /* Hover states */
   .hover\:border-rd-blue:hover {
     border-color: var(--rd-blue);

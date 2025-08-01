@@ -58,7 +58,7 @@ const RecommendationTypeField = memo(
       <fieldset className={`mb-6 ${className}`} data-testid={testId}>
         <legend className="text-lg font-semibold mb-3 text-rd-blue-dark">
           {title}
-          {required && <span className="text-red-500 ml-1">*</span>}
+          {required && <span className="text-rd-error ml-1">*</span>}
           {selectedValue && (
             <span className="ml-2 text-sm text-rd-cyan font-normal">
               ({RECOMMENDATION_TYPE_LABELS[selectedValue]})
