@@ -6,10 +6,16 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 import Header from "../../../components/shared/Header";
+import { ThemeProvider } from "../../../contexts/ThemeContext";
+
+// Wrapper para envolver componentes com ThemeProvider
+const renderWithTheme = (component) => {
+  return render(<ThemeProvider>{component}</ThemeProvider>);
+};
 
 describe("Header", () => {
   test("deve renderizar com propriedades padrão", () => {
-    render(<Header />);
+    renderWithTheme(<Header />);
 
     // Verificar se o título padrão está presente
     expect(
@@ -35,7 +41,7 @@ describe("Header", () => {
     const customLogoSrc = "/custom-logo.svg";
     const customLogoAlt = "Logo Customizado";
 
-    render(
+    renderWithTheme(
       <Header
         title={customTitle}
         description={customDescription}
@@ -52,7 +58,7 @@ describe("Header", () => {
   });
 
   test("deve aplicar classes CSS corretas", () => {
-    render(<Header data-testid="custom-header" />);
+    renderWithTheme(<Header data-testid="custom-header" />);
 
     const header = screen.getByTestId("custom-header");
     expect(header).toHaveClass("fixed", "top-0", "left-0", "right-0", "z-50");
@@ -65,14 +71,14 @@ describe("Header", () => {
 
   test("deve aplicar className customizada", () => {
     const customClass = "custom-header-class";
-    render(<Header className={customClass} />);
+    renderWithTheme(<Header className={customClass} />);
 
     const header = screen.getByTestId("app-header");
     expect(header).toHaveClass(customClass);
   });
 
   test("deve ter estrutura HTML correta", () => {
-    render(<Header />);
+    renderWithTheme(<Header />);
 
     // Verificar se é um elemento header
     const header = screen.getByRole("banner");
@@ -88,7 +94,7 @@ describe("Header", () => {
   });
 
   test("deve ter acessibilidade adequada", () => {
-    render(<Header />);
+    renderWithTheme(<Header />);
 
     // Verificar se o header tem role banner
     const header = screen.getByRole("banner");
