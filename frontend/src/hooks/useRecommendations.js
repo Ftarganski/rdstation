@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
-import recommendationService from '../services/recommendation.service';
+import { recommendationService } from '../services';
 
 /**
  * Estados possíveis para o processo de recomendação

@@ -5,12 +5,15 @@
  */
 
 import { useCallback, useState } from "react";
-import RecommendationForm from "./components/Form/RecommendationForm";
-import ProductModal from "./components/ProductModal/ProductModal";
-import RecommendationList from "./components/RecommendationList/RecommendationList.jsx";
-import { ErrorState, LoadingState } from "./components/shared/StateComponents";
+import {
+  ErrorState,
+  LoadingState,
+  ProductModal,
+  RecommendationForm,
+  RecommendationList,
+} from "./components";
 import { useProducts } from "./hooks";
-import recommendationService from "./services/recommendation.service";
+import { recommendationService } from "./services";
 
 /**
  * Componente principal da aplicação
