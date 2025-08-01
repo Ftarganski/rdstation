@@ -33,6 +33,41 @@
   --rd-red: #ef4444; /* Error state */
   --rd-yellow: #f59e0b; /* Warning state */
   --rd-green: #10b981; /* Success state */
+
+  /* Overlay Colors */
+  --rd-overlay: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+}
+
+/* Dark Theme Tokens */
+:root.dark {
+  /* Primary Brand Colors (ajustados para dark) */
+  --rd-blue: #00d4fe; /* Mantém o azul primário */
+  --rd-blue-dark: #7aeefa; /* Inverte - azul claro vira texto principal */
+  --rd-blue-light: #003c5b; /* Inverte - azul escuro vira backgrounds */
+
+  /* Secondary Colors */
+  --rd-cyan: #31c1d1; /* Mantém o cyan */
+  --rd-cyan-light: #0f2832; /* Cyan escuro para backgrounds */
+  --rd-sky: #00d4fe; /* Mantém sky */
+  --rd-sky-light: #001821; /* Sky muito escuro para cards */
+
+  /* Neutral Colors */
+  --rd-gray: #a0a0a0; /* Gray mais claro para melhor contraste */
+  --rd-gray-light: #1a1a1a; /* Background principal escuro */
+  --rd-white: #0d1117; /* Background cards escuro */
+
+  /* State Colors (ajustados para dark) */
+  --rd-red: #f87171; /* Vermelho mais suave */
+  --rd-yellow: #fbbf24; /* Amarelo mais vibrante */
+  --rd-green: #34d399; /* Verde mais vibrante */
+
+  /* Overlay Colors */
+  --rd-overlay: rgba(0, 0, 0, 0.7); /* Overlay mais escuro para dark theme */
+}
+
+/* Tokens adicionais para transições suaves */
+:root {
+  --transition-theme: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ==========================================================================
@@ -46,6 +81,12 @@
 
   .rd-radio {
     accent-color: var(--rd-cyan);
+  }
+
+  /* Theme transition base para todos os elementos */
+  * {
+    transition: background-color 0.3s ease, color 0.3s ease,
+      border-color 0.3s ease;
   }
 }
 
@@ -109,6 +150,11 @@
   }
   .border-rd-gray {
     border-color: var(--rd-gray);
+  }
+
+  /* Overlay utilities */
+  .bg-rd-overlay {
+    background-color: var(--rd-overlay);
   }
 
   /* Error & Warning States */

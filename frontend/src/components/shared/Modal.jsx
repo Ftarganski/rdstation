@@ -75,7 +75,7 @@ const Modal = ({
     >
       {/* Overlay */}
       <div
-        className="absolute inset-0 bg-black bg-opacity-50 transition-opacity"
+        className="absolute inset-0 bg-rd-overlay transition-opacity"
         onClick={handleOverlayClick}
         aria-hidden="true"
         data-testid="modal-overlay"
@@ -84,7 +84,7 @@ const Modal = ({
       {/* Modal Content */}
       <div
         className={`
-          relative bg-white rounded-xl shadow-2xl w-full ${sizeClasses[size]}
+          relative bg-rd-white rounded-xl shadow-2xl w-full ${sizeClasses[size]}
           max-h-[90vh] flex flex-col
           transform transition-all duration-200 ease-out
           ${className}
