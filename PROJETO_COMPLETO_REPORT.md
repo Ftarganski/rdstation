@@ -243,7 +243,7 @@ sel.trim().toLowerCase() === pref.trim().toLowerCase();
 .filter(({ score }) => score > 0)
 
 // 2. Ordena por score decrescente (maior primeiro)
-.sort((a, b) => b.score - a.score || a.product.id - b.product.id)
+.sort((a, b) => b.score - a.score || b.product.id - a.product.id)
 ```
 
 **🎯 4. Tipos de Recomendação**
@@ -258,7 +258,7 @@ sel.trim().toLowerCase() === pref.trim().toLowerCase();
 Quando dois produtos têm o mesmo score:
 
 ```javascript
-.sort((a, b) => b.score - a.score || a.product.id - b.product.id)
+.sort((a, b) => b.score - a.score || b.product.id - a.product.id)
 ```
 
 1. **Primeiro critério**: Score mais alto
