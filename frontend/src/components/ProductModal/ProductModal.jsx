@@ -4,7 +4,7 @@
  */
 
 import PropTypes from "prop-types";
-import Modal from "../shared/Modal";
+import { Modal } from "../components";
 
 /**
  * Componente de tag/badge reutilizável

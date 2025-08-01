@@ -6,11 +6,7 @@
 
 import PropTypes from "prop-types";
 import { memo } from "react";
-import {
-  EmptyState,
-  ErrorState,
-  LoadingState,
-} from "../shared/StateComponents";
+import { EmptyState, ErrorState, LoadingState } from "../components";
 
 /**
  * Componente para renderizar um item individual de recomendação

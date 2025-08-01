@@ -11,11 +11,14 @@ import {
   normalizeFormData,
   validateFormData,
 } from "../../utils/formValidation";
-import { ErrorState, LoadingState } from "../shared/StateComponents";
-import FeaturesField from "./Fields/FeaturesField";
-import PreferencesField from "./Fields/PreferencesField";
-import RecommendationTypeField from "./Fields/RecommendationTypeField";
-import SubmitButton from "./SubmitButton/SubmitButton";
+import {
+  ErrorState,
+  FeaturesField,
+  LoadingState,
+  PreferencesField,
+  RecommendationTypeField,
+  SubmitButton,
+} from "../components";
 
 /**
  * Hook customizado para gerenciar estado do formulário de recomendações

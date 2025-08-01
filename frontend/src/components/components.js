@@ -19,4 +19,4 @@ export { default as RecommendationList } from './RecommendationList/Recommendati
 // Shared components
 export { default as Input } from './shared/Input';
 export { default as Modal } from './shared/Modal';
-export { ErrorState, LoadingState } from './shared/StateComponents';
+export { EmptyState, ErrorState, LoadingState } from './shared/StateComponents';
