@@ -4,12 +4,16 @@
  * Separação clara de responsabilidades
  */
 
-import { useCallback, useState } from 'react';
-import RecommendationForm from './components/Form/RecommendationForm';
-import RecommendationList from './components/RecommendationList/RecommendationList.jsx';
-import { ErrorState, LoadingState } from './components/shared/StateComponents';
-import { useProducts } from './hooks';
-import recommendationService from './services/recommendation.service';
+import {
+  ErrorState,
+  LoadingState,
+  ProductModal,
+  RecommendationForm,
+  RecommendationList,
+} from "@/components";
+import { useProducts } from "@/hooks";
+import { recommendationService } from "@/services";
+import { useCallback, useState } from "react";
 
 /**
  * Componente principal da aplicação
@@ -20,6 +24,10 @@ function App() {
   const [isProcessingRecommendations, setIsProcessingRecommendations] =
     useState(false);
   const [recommendationError, setRecommendationError] = useState(null);
+
+  // Estados para o modal de produto
+  const [isProductModalOpen, setIsProductModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const {
     products,
@@ -36,7 +44,7 @@ function App() {
   const handleGenerateRecommendations = useCallback(
     async (formData) => {
       if (!products || products.length === 0) {
-        setRecommendationError('Nenhum produto disponível para recomendação');
+        setRecommendationError("Nenhum produto disponível para recomendação");
         return;
       }
 
@@ -53,12 +61,12 @@ function App() {
 
         if (result.length === 0) {
           setRecommendationError(
-            'Nenhuma recomendação encontrada para os critérios selecionados'
+            "Nenhuma recomendação encontrada para os critérios selecionados"
           );
         }
       } catch (error) {
-        console.error('Erro ao gerar recomendações:', error);
-        setRecommendationError('Erro ao gerar recomendações. Tente novamente.');
+        console.error("Erro ao gerar recomendações:", error);
+        setRecommendationError("Erro ao gerar recomendações. Tente novamente.");
         setRecommendations([]);
       } finally {
         setIsProcessingRecommendations(false);
@@ -82,6 +90,23 @@ function App() {
    */
   const handleSelectRecommendation = useCallback((recommendation) => {
     setSelectedRecommendation(recommendation);
+  }, []);
+
+  /**
+   * Abre o modal com os detalhes do produto
+   * @param {Object} product - Produto selecionado
+   */
+  const handleProductCardClick = useCallback((product) => {
+    setSelectedProduct(product);
+    setIsProductModalOpen(true);
+  }, []);
+
+  /**
+   * Fecha o modal de produto
+   */
+  const handleCloseProductModal = useCallback(() => {
+    setIsProductModalOpen(false);
+    setSelectedProduct(null);
   }, []);
 
   /**
@@ -109,7 +134,7 @@ function App() {
 
     if (recommendationError) {
       return (
-        <div className="p-6 rounded-lg border bg-red-50 border-red-200 text-red-800">
+        <div className="p-6 rounded-lg border bg-rd-error border-rd-error text-rd-error">
           <ErrorState
             title="Erro nas Recomendações"
             message={recommendationError}
@@ -124,11 +149,11 @@ function App() {
     if (recommendations.length === 0) {
       return (
         <div className="text-center py-8">
-          <div className="text-gray-400 text-5xl mb-4">📋</div>
-          <h3 className="text-lg font-medium text-gray-800 mb-2">
+          <div className="text-rd-gray text-5xl mb-4">📋</div>
+          <h3 className="text-lg font-medium text-rd-blue-dark mb-2">
             Nenhuma recomendação ainda
           </h3>
-          <p className="text-gray-600">
+          <p className="text-rd-gray">
             Preencha o formulário ao lado para receber recomendações
             personalizadas.
           </p>
@@ -139,8 +164,9 @@ function App() {
     return (
       <RecommendationList
         recommendations={recommendations}
-        selectedRecommendation={selectedRecommendation}
-        onSelectRecommendation={handleSelectRecommendation}
+        selectedItem={selectedRecommendation}
+        onItemSelect={handleSelectRecommendation}
+        onItemCardClick={handleProductCardClick}
       />
     );
   };
@@ -148,13 +174,13 @@ function App() {
   // Estado de loading inicial dos produtos
   if (isLoadingProducts) {
     return (
-      <div className="min-h-screen bg-gray-50 flex flex-col justify-center items-center">
+      <div className="min-h-screen bg-rd-gray-light flex flex-col justify-center items-center">
         <div className="text-center max-w-md">
           <LoadingState
             message="Carregando produtos disponíveis..."
             size="large"
           />
-          <p className="text-gray-600 mt-4">
+          <p className="text-rd-gray mt-4">
             Aguarde enquanto preparamos o sistema de recomendações para você.
           </p>
         </div>
@@ -165,7 +191,7 @@ function App() {
   // Estado de erro dos produtos
   if (hasProductsError) {
     return (
-      <div className="min-h-screen bg-gray-50 flex flex-col justify-center items-center p-4">
+      <div className="min-h-screen bg-rd-gray-light flex flex-col justify-center items-center p-4">
         <div className="max-w-md w-full">
           <ErrorState
             title="Erro ao carregar o sistema"
@@ -180,25 +206,25 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-rd-gray-light">
       <div className="max-w-7xl mx-auto px-4 py-8">
         <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Sistema de Recomendações RD Station
+          <h1 className="text-4xl font-bold text-rd-blue-dark mb-4">
+            Recomendador de Produtos RD Station
           </h1>
-          <p className="text-lg text-gray-600">
-            Encontre as melhores soluções para suas necessidades
+          <p className="text-lg text-rd-gray">
+            Descubra quais soluções da RD Station são ideais para o seu negócio.
           </p>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <section>
-            <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-              <header className="border-b border-gray-200 pb-4 mb-6">
-                <h2 className="text-2xl font-semibold text-gray-800 mb-2">
+            <div className="bg-rd-white rounded-xl shadow-lg p-6 border border-rd-gray">
+              <header className="border-b border-rd-gray pb-4 mb-6">
+                <h2 className="text-2xl font-semibold text-rd-blue-dark mb-2">
                   Preencha suas Preferências
                 </h2>
-                <p className="text-gray-600">
+                <p className="text-rd-gray">
                   Nos conte sobre suas necessidades para personalizar as
                   recomendações
                 </p>
@@ -213,13 +239,13 @@ function App() {
           </section>
 
           <section>
-            <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-              <header className="border-b border-gray-200 pb-4 mb-6">
-                <h2 className="text-2xl font-semibold text-gray-800 mb-2">
+            <div className="bg-rd-white rounded-xl shadow-lg p-6 border border-rd-gray">
+              <header className="border-b border-rd-gray pb-4 mb-6">
+                <h2 className="text-2xl font-semibold text-rd-blue-dark mb-2">
                   Recomendações Personalizadas
                 </h2>
                 {recommendations.length > 0 && (
-                  <p className="text-gray-600">
+                  <p className="text-rd-gray">
                     {recommendations.length} recomendações encontradas
                   </p>
                 )}
@@ -229,6 +255,13 @@ function App() {
             </div>
           </section>
         </div>
+
+        {/* Modal de Detalhes do Produto */}
+        <ProductModal
+          isOpen={isProductModalOpen}
+          onClose={handleCloseProductModal}
+          product={selectedProduct}
+        />
       </div>
     </div>
   );

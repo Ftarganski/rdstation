@@ -3,6 +3,7 @@
 <div align="center">
 
 ![React](https://img.shields.io/badge/React-18.2.0-blue?style=for-the-badge&logo=react)
+![Vite](https://img.shields.io/badge/Vite-7.0.6-646CFF?style=for-the-badge&logo=vite)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.0-38B2AC?style=for-the-badge&logo=tailwind-css)
 ![Node.js](https://img.shields.io/badge/Node.js-18.3+-green?style=for-the-badge&logo=node.js)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
@@ -27,7 +28,7 @@ _Desenvolvido com arquitetura moderna, princípios SOLID e Tailwind CSS_
 
 ## 📋 Sobre o Projeto
 
-O **RD Station Recommendation System** é uma aplicação web moderna desenvolvida em React.js que implementa um sistema inteligente de recomendação de produtos. O sistema analisa as preferências e funcionalidades desejadas pelos usuários para fornecer recomendações personalizadas dos produtos RD Station.
+O **RD Station Recommendation System** é uma aplicação web moderna desenvolvida em React.js com Vite que implementa um sistema inteligente de recomendação de produtos. O sistema analisa as preferências e funcionalidades desejadas pelos usuários para fornecer recomendações personalizadas dos produtos RD Station.
 
 ### ✨ Principais Características
 
@@ -56,6 +57,7 @@ O **RD Station Recommendation System** é uma aplicação web moderna desenvolvi
 ### **Requisitos Técnicos**
 
 - ✅ **React.js 18.2+** para desenvolvimento frontend
+- ✅ **Vite 7.0+** como build tool e dev server
 - ✅ **Tailwind CSS** para estilização moderna
 - ✅ **json-server** para simulação de API REST
 - ✅ **Node.js 18.3+** como runtime
@@ -199,10 +201,11 @@ yarn dev
 | Script           | Descrição                                            | Comando                  |
 | ---------------- | ---------------------------------------------------- | ------------------------ |
 | `dev`            | 🔥 **Desenvolvimento completo** (frontend + backend) | `npm run dev`            |
-| `start`          | 🌐 Apenas frontend                                   | `npm start`              |
+| `start`          | 🌐 Desenvolvimento com Vite                          | `npm start`              |
 | `start:frontend` | ⚛️ Frontend isolado                                  | `npm run start:frontend` |
 | `start:backend`  | 🗄️ Backend (json-server)                             | `npm run start:backend`  |
 | `build`          | 📦 Build para produção                               | `npm run build`          |
+| `preview`        | 👀 Preview do build                                  | `npm run preview`        |
 | `test`           | 🧪 Executar testes                                   | `npm test`               |
 
 ### **🌐 URLs de Acesso**
@@ -356,6 +359,7 @@ Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](L
 
 - 🏢 **RD Station** pela oportunidade de desenvolvimento
 - ⚛️ **React Team** pelo framework excepcional
+- ⚡ **Vite Team** pela ferramenta de build incrível
 - 🎨 **Tailwind CSS** pelo sistema de design
 - 🌐 **Open Source Community** pelas ferramentas incríveis
 

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import getProducts from '../services/product.service';
+import { productService as getProducts } from '../services';
 
 // Constantes para controle de amostragem
 const MAX_PREFERENCES_PER_PRODUCT = 2;

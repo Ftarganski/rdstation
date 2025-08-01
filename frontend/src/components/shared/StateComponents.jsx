@@ -38,11 +38,11 @@ export const LoadingState = memo(
       >
         {showSpinner && (
           <div
-            className={`animate-spin rounded-full border-b-2 border-blue-600 mb-4 ${sizeClasses[size]}`}
+            className={`animate-spin rounded-full border-b-2 border-rd-blue mb-4 ${sizeClasses[size]}`}
             aria-hidden="true"
           />
         )}
-        <p className={`text-gray-600 text-center ${textSizeClasses[size]}`}>
+        <p className={`text-rd-gray text-center ${textSizeClasses[size]}`}>
           {message}
         </p>
       </div>
@@ -66,22 +66,22 @@ export const ErrorState = memo(
   }) => {
     const variantClasses = {
       error: {
-        container: "bg-red-50 border-red-200 text-red-800",
-        title: "text-red-800",
-        message: "text-red-600",
-        button: "bg-red-600 hover:bg-red-700 text-white",
+        container: "bg-rd-error border-rd-error text-rd-error",
+        title: "text-rd-error",
+        message: "text-rd-error",
+        button: "bg-rd-error-solid hover:bg-rd-error-dark text-white",
       },
       warning: {
-        container: "bg-yellow-50 border-yellow-200 text-yellow-800",
-        title: "text-yellow-800",
-        message: "text-yellow-600",
-        button: "bg-yellow-600 hover:bg-yellow-700 text-white",
+        container: "bg-rd-warning border-rd-warning text-rd-warning",
+        title: "text-rd-warning",
+        message: "text-rd-warning",
+        button: "bg-rd-warning-solid hover:bg-rd-warning-dark text-white",
       },
       info: {
-        container: "bg-blue-50 border-blue-200 text-blue-800",
-        title: "text-blue-800",
-        message: "text-blue-600",
-        button: "bg-blue-600 hover:bg-blue-700 text-white",
+        container: "bg-rd-sky-light border-rd-blue text-rd-blue-dark",
+        title: "text-rd-blue-dark",
+        message: "text-rd-blue",
+        button: "bg-rd-blue hover:bg-rd-blue-dark text-rd-white",
       },
     };
 
@@ -128,8 +128,8 @@ export const EmptyState = memo(
     return (
       <div className={`text-center py-12 ${className}`} data-testid={testId}>
         {icon && <div className="mb-4 flex justify-center">{icon}</div>}
-        <h3 className="text-lg font-medium text-gray-900 mb-2">{title}</h3>
-        <p className="text-gray-500 mb-6">{message}</p>
+        <h3 className="text-lg font-medium text-rd-blue-dark mb-2">{title}</h3>
+        <p className="text-rd-gray mb-6">{message}</p>
         {action && <div className="flex justify-center">{action}</div>}
       </div>
     );

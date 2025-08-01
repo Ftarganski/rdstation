@@ -1,494 +1,203 @@
 /**
- * Estilos Principais - RD Station Recommendation System
- * Demonstra o uso do Tailwind CSS com customizações específicas
+ * RD Station Recommendation System - Design Tokens & Specific Styles
  */
 
 /* ==========================================================================
-   1. TAILWIND CSS IMPORTS
+   TAILWIND CSS IMPORTS
    ========================================================================== */
-
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
 /* ==========================================================================
-   2. CUSTOMIZAÇÕES ESPECÍFICAS DO PROJETO
+   DESIGN TOKENS - CORES DA MARCA RD STATION
    ========================================================================== */
-
-/* Variáveis CSS para cores da marca RD Station */
 :root {
-  --rd-blue: #2563eb;
-  --rd-blue-dark: #1d4ed8;
-  --rd-blue-light: #dbeafe;
-  --rd-gray: #6b7280;
-  --rd-gray-light: #f3f4f6;
-  --rd-green: #10b981;
-  --rd-green-light: #d1fae5;
-  --rd-red: #ef4444;
-  --rd-yellow: #f59e0b;
-  --rd-purple: #8b5cf6;
-  --rd-purple-light: #ede9fe;
-}
+  /* Primary Brand Colors */
+  --rd-blue: #00d4fe; /* Vivid sky blue - Primary */
+  --rd-blue-dark: #003c5b; /* Indigo dye - Dark blue */
+  --rd-blue-light: #7aeefa; /* Electric blue - Light blue */
 
-/* Animação customizada para loading spinner */
-@keyframes rd-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+  /* Secondary Colors */
+  --rd-cyan: #31c1d1; /* Electric blue - Secondary accent */
+  --rd-cyan-light: #e4fbfe; /* Electric blue 900 - Very light cyan */
+  --rd-sky: #00d4fe; /* Vivid sky blue - Sky tone */
+  --rd-sky-light: #ccf6ff; /* Vivid sky blue 900 - Light sky */
 
-.rd-loading-spinner {
-  animation: rd-spin 1s linear infinite;
-}
+  /* Neutral Colors */
+  --rd-gray: #949494; /* Anti-flash white - Light gray */
+  --rd-gray-light: #fbfbfb; /* Anti-flash white 900 - Very light gray */
+  --rd-white: #fefefe; /* White - Pure white */
 
-/* Customização para accent color dos inputs */
-.rd-checkbox {
-  accent-color: var(--rd-blue);
-}
-
-.rd-radio {
-  accent-color: var(--rd-purple);
-}
-
-/* Efeito hover customizado para recomendações */
-.rd-recommendation-hover {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.rd-recommendation-hover:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-/* Estilo para foco acessível */
-.rd-focus-ring:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--rd-blue), 0 0 0 4px rgba(59, 130, 246, 0.1);
+  /* State Colors (mantendo compatibilidade) */
+  --rd-red: #ef4444; /* Error state */
+  --rd-yellow: #f59e0b; /* Warning state */
+  --rd-green: #10b981; /* Success state */
 }
 
 /* ==========================================================================
-   3. COMPONENTES TAILWIND CUSTOMIZADOS
+   COMPONENTES ESPECÍFICOS (USE TAILWIND NOS DEMAIS)
    ========================================================================== */
-
-/* Botão primário customizado usando @apply */
 @layer components {
-  .btn-rd-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed;
+  /* Input customizations for better UX */
+  .rd-checkbox {
+    accent-color: var(--rd-blue);
   }
 
-  .btn-rd-secondary {
-    @apply bg-gray-500 hover:bg-gray-600 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed;
-  }
-
-  .card-rd {
-    @apply bg-white rounded-xl shadow-lg p-6 border border-gray-100;
-  }
-
-  .heading-rd-primary {
-    @apply text-4xl font-bold text-gray-900 mb-4;
-  }
-
-  .heading-rd-secondary {
-    @apply text-2xl font-semibold text-gray-800 mb-6;
-  }
-
-  .heading-rd-tertiary {
-    @apply text-lg font-semibold text-gray-800 mb-3;
-  }
-
-  .form-fieldset-rd {
-    @apply mb-6;
-  }
-
-  .form-legend-rd {
-    @apply text-lg font-semibold mb-3 text-gray-800;
-  }
-
-  .form-input-rd {
-    @apply p-2 rounded-lg border border-gray-200 transition-colors hover:border-blue-300 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
-  }
-
-  .tag-rd-preference {
-    @apply inline-block px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded;
-  }
-
-  .tag-rd-feature {
-    @apply inline-block px-2 py-1 text-xs bg-green-100 text-green-700 rounded;
-  }
-
-  .recommendation-item-rd {
-    @apply p-4 rounded-lg border-2 border-gray-200 transition-all cursor-pointer hover:border-blue-300 hover:shadow-sm;
-  }
-
-  .recommendation-item-rd--selected {
-    @apply border-blue-500 bg-blue-50 shadow-md;
-  }
-
-  .loading-state-rd {
-    @apply flex flex-col items-center justify-center py-8;
-  }
-
-  .error-state-rd {
-    @apply p-6 rounded-lg border bg-red-50 border-red-200 text-red-800;
-  }
-
-  .warning-state-rd {
-    @apply p-6 rounded-lg border bg-yellow-50 border-yellow-200 text-yellow-800;
-  }
-
-  .info-state-rd {
-    @apply p-6 rounded-lg border bg-blue-50 border-blue-200 text-blue-800;
+  .rd-radio {
+    accent-color: var(--rd-cyan);
   }
 }
 
 /* ==========================================================================
-   4. UTILIDADES PERSONALIZADAS
+   UTILIDADES CUSTOMIZADAS
    ========================================================================== */
-
 @layer utilities {
+  /* Brand color utilities */
   .text-rd-blue {
     color: var(--rd-blue);
   }
-
-  .text-rd-green {
-    color: var(--rd-green);
+  .text-rd-blue-dark {
+    color: var(--rd-blue-dark);
   }
-
-  .text-rd-purple {
-    color: var(--rd-purple);
+  .text-rd-cyan {
+    color: var(--rd-cyan);
+  }
+  .text-rd-sky {
+    color: var(--rd-sky);
+  }
+  .text-rd-gray {
+    color: var(--rd-gray);
+  }
+  .text-rd-white {
+    color: var(--rd-white);
   }
 
   .bg-rd-blue {
     background-color: var(--rd-blue);
   }
-
+  .bg-rd-blue-dark {
+    background-color: var(--rd-blue-dark);
+  }
   .bg-rd-blue-light {
     background-color: var(--rd-blue-light);
   }
-
-  .bg-rd-green-light {
-    background-color: var(--rd-green-light);
+  .bg-rd-cyan-light {
+    background-color: var(--rd-cyan-light);
   }
-
-  .bg-rd-purple-light {
-    background-color: var(--rd-purple-light);
+  .bg-rd-sky-light {
+    background-color: var(--rd-sky-light);
+  }
+  .bg-rd-gray {
+    background-color: var(--rd-gray);
+  }
+  .bg-rd-gray-light {
+    background-color: var(--rd-gray-light);
+  }
+  .bg-rd-white {
+    background-color: var(--rd-white);
   }
 
   .border-rd-blue {
     border-color: var(--rd-blue);
   }
+  .border-rd-blue-dark {
+    border-color: var(--rd-blue-dark);
+  }
+  .border-rd-cyan {
+    border-color: var(--rd-cyan);
+  }
+  .border-rd-gray {
+    border-color: var(--rd-gray);
+  }
 
-  .animate-rd-spin {
-    animation: rd-spin 1s linear infinite;
+  /* Error & Warning States */
+  .text-rd-error {
+    color: var(--rd-red);
+  }
+  .text-rd-warning {
+    color: var(--rd-yellow);
+  }
+  .bg-rd-error {
+    background-color: #fef2f2; /* red-50 equivalent */
+  }
+  .bg-rd-warning {
+    background-color: #fffbeb; /* yellow-50 equivalent */
+  }
+  .border-rd-error {
+    border-color: #fecaca; /* red-200 equivalent */
+  }
+  .border-rd-warning {
+    border-color: #fde68a; /* yellow-200 equivalent */
+  }
+  .bg-rd-error-solid {
+    background-color: var(--rd-red);
+  }
+  .bg-rd-warning-solid {
+    background-color: var(--rd-yellow);
+  }
+  .hover\:bg-rd-error-dark:hover {
+    background-color: #dc2626; /* red-600 equivalent */
+  }
+  .hover\:bg-rd-warning-dark:hover {
+    background-color: #d97706; /* yellow-600 equivalent */
+  }
+
+  /* Focus states */
+  .focus\:ring-rd-blue:focus {
+    --tw-ring-color: var(--rd-blue);
+  }
+  .focus\:ring-rd-cyan:focus {
+    --tw-ring-color: var(--rd-cyan);
+  }
+
+  /* Disabled states */
+  .disabled\:bg-rd-error-light:disabled {
+    background-color: #fecaca; /* red-300 equivalent */
+  }
+  .disabled\:bg-rd-gray-light:disabled {
+    background-color: var(--rd-gray-light);
+  }
+
+  /* Hover states */
+  .hover\:border-rd-blue:hover {
+    border-color: var(--rd-blue);
+  }
+  .hover\:border-rd-cyan:hover {
+    border-color: var(--rd-cyan);
+  }
+  .hover\:bg-rd-cyan-light:hover {
+    background-color: var(--rd-cyan-light);
+  }
+  .hover\:bg-rd-sky-light:hover {
+    background-color: var(--rd-sky-light);
+  }
+
+  /* Accessibility helper */
+  .visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
   }
 }
 
 /* ==========================================================================
-   5. RESPONSIVIDADE E ACESSIBILIDADE
+   CONFIGURAÇÕES GLOBAIS
    ========================================================================== */
-
-/* Suporte a motion reduzido */
-@media (prefers-reduced-motion: reduce) {
-  .rd-loading-spinner,
-  .animate-rd-spin {
-    animation: none;
-  }
-
-  .rd-recommendation-hover {
-    transition: none;
+/* Smooth scrolling */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
 
-/* Modo de impressão */
-@media print {
-  .no-print {
-    display: none !important;
-  }
-
-  body {
-    background: white !important;
-    color: black !important;
-  }
-}
-
-/* ==========================================================================
-   6. BOTÕES
-   ========================================================================== */
-
-.btn {
-  font-weight: 500;
-  border-radius: 0.5rem;
-  transition: all 0.2s;
-  border: none;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-}
-
-.btn:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.btn--primary {
-  background-color: #3b82f6;
-  color: white;
-}
-
-.btn--primary:hover:not(:disabled) {
-  background-color: #2563eb;
-}
-
-.btn--primary:disabled {
-  background-color: #93c5fd;
-}
-
-.btn--secondary {
-  background-color: #6b7280;
-  color: white;
-}
-
-.btn--secondary:hover:not(:disabled) {
-  background-color: #4b5563;
-}
-
-.btn--secondary:disabled {
-  background-color: #d1d5db;
-}
-
-.btn--small {
-  padding: 0.5rem 0.75rem;
-  font-size: 0.875rem;
-}
-
-.btn--medium {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-}
-
-.btn--large {
-  padding: 1rem 2rem;
-  font-size: 1.125rem;
-}
-
-.btn--full {
-  width: 100%;
-}
-
-/* ==========================================================================
-   7. ESTADOS DE INTERFACE
-   ========================================================================== */
-
-.loading-spinner {
-  border-radius: 50%;
-  border-style: solid;
-  border-color: transparent;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.loading-spinner--small {
-  width: 1rem;
-  height: 1rem;
-  border-width: 2px;
-  border-bottom-color: white;
-}
-
-.loading-spinner--medium {
-  width: 1.5rem;
-  height: 1.5rem;
-  border-width: 2px;
-  border-bottom-color: #3b82f6;
-}
-
-.loading-spinner--large {
-  width: 2rem;
-  height: 2rem;
-  border-width: 2px;
-  border-bottom-color: #3b82f6;
-}
-
-.state-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 0;
-}
-
-.error-container {
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid;
-}
-
-.error-container--error {
-  background-color: #fef2f2;
-  border-color: #fecaca;
-  color: #991b1b;
-}
-
-.error-container--warning {
-  background-color: #fffbeb;
-  border-color: #fed7aa;
-  color: #92400e;
-}
-
-.error-container--info {
-  background-color: #eff6ff;
-  border-color: #bfdbfe;
-  color: #1e40af;
-}
-
-/* ==========================================================================
-   8. COMPONENTES DE LISTA
-   ========================================================================== */
-
-.recommendation-item {
-  padding: 1rem;
-  border-radius: 0.5rem;
-  border: 2px solid;
-  transition: all 0.2s;
-  cursor: pointer;
-}
-
-.recommendation-item:hover {
-  border-color: #93c5fd;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-}
-
-.recommendation-item--selected {
-  border-color: #3b82f6;
-  background-color: #eff6ff;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-.recommendation-item--default {
-  border-color: #e5e7eb;
-}
-
-.tag {
-  display: inline-block;
-  padding: 0.25rem 0.5rem;
-  font-size: 0.75rem;
-  border-radius: 0.25rem;
-}
-
-.tag--preference {
-  background-color: #dbeafe;
-  color: #1d4ed8;
-}
-
-.tag--feature {
-  background-color: #d1fae5;
-  color: #065f46;
-}
-
-/* ==========================================================================
-   9. COMPONENTES ESPECÍFICOS DO PROJETO
-   ========================================================================== */
-
-.rd-logo {
-  height: 40px;
-  pointer-events: none;
-}
-
-.selection-counter {
-  margin-left: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 400;
-}
-
-.selection-counter--preferences {
-  color: #3b82f6;
-}
-
-.selection-counter--features {
-  color: #10b981;
-}
-
-.selection-counter--recommendation-type {
-  color: #8b5cf6;
-}
-
-.recommendation-ranking {
-  text-align: right;
-}
-
-.recommendation-ranking__label {
-  font-size: 0.875rem;
-  color: #6b7280;
-}
-
-.recommendation-ranking__number {
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: #3b82f6;
-}
-
-/* ==========================================================================
-   10. UTILITÁRIOS E HELPERS
-   ========================================================================== */
-
-.visually-hidden {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
-
-.focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px #3b82f6, 0 0 0 4px rgba(59, 130, 246, 0.1);
-}
-
-.transition-smooth {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* ==========================================================================
-   11. RESPONSIVIDADE E MEDIA QUERIES
-   ========================================================================== */
-
-@media (max-width: 768px) {
-  .content-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .card {
-    padding: 1rem;
-  }
-
-  .heading-primary {
-    font-size: 1.875rem;
-  }
-
-  .form-actions {
-    flex-direction: column;
-  }
-}
-
+/* Motion reduction support */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -496,33 +205,6 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-
-  .loading-spinner {
-    animation: none;
-  }
-}
-
-/* ==========================================================================
-   12. CUSTOMIZAÇÕES ESPECÍFICAS
-   ========================================================================== */
-
-/* RD Station brand colors */
-:root {
-  --rd-blue: #2563eb;
-  --rd-blue-dark: #1d4ed8;
-  --rd-gray: #6b7280;
-  --rd-gray-light: #f3f4f6;
-  --rd-green: #10b981;
-  --rd-red: #ef4444;
-  --rd-yellow: #f59e0b;
-  --rd-purple: #8b5cf6;
-}
-
-/* Smooth scrolling para navegação */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
   }
 }
 
@@ -532,8 +214,10 @@
     display: none !important;
   }
 
-  .app-container {
+  body {
     background: white !important;
+    color: black !important;
+    print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
   }
 }

@@ -4,18 +4,18 @@
  * Utiliza composição e separação de responsabilidades
  */
 
+import {
+  ErrorState,
+  FeaturesField,
+  LoadingState,
+  PreferencesField,
+  RecommendationTypeField,
+  SubmitButton,
+} from "@/components";
+import { useProducts } from "@/hooks";
+import { normalizeFormData, validateFormData } from "@/utils/formValidation";
 import PropTypes from "prop-types";
 import { memo, useCallback, useState } from "react";
-import { useProducts } from "../../hooks";
-import {
-  normalizeFormData,
-  validateFormData,
-} from "../../utils/formValidation";
-import { ErrorState, LoadingState } from "../shared/StateComponents";
-import FeaturesField from "./Fields/FeaturesField";
-import PreferencesField from "./Fields/PreferencesField";
-import RecommendationTypeField from "./Fields/RecommendationTypeField";
-import { SubmitButton } from "./SubmitButton";
 
 /**
  * Hook customizado para gerenciar estado do formulário de recomendações
@@ -206,11 +206,11 @@ const RecommendationForm = memo(
             onChange={handlePreferencesChange}
             disabled={disabled || isSubmitting}
             required
-            className={validationErrors.preferences ? "border-red-500" : ""}
+            className={validationErrors.preferences ? "border-rd-error" : ""}
           />
 
           {validationErrors.preferences && (
-            <p className="text-red-600 text-sm mt-1" role="alert">
+            <p className="text-rd-error text-sm mt-1" role="alert">
               {validationErrors.preferences}
             </p>
           )}
@@ -221,11 +221,11 @@ const RecommendationForm = memo(
             onChange={handleFeaturesChange}
             disabled={disabled || isSubmitting}
             required
-            className={validationErrors.features ? "border-red-500" : ""}
+            className={validationErrors.features ? "border-rd-error" : ""}
           />
 
           {validationErrors.features && (
-            <p className="text-red-600 text-sm mt-1" role="alert">
+            <p className="text-rd-error text-sm mt-1" role="alert">
               {validationErrors.features}
             </p>
           )}
@@ -236,18 +236,18 @@ const RecommendationForm = memo(
             disabled={disabled || isSubmitting}
             required
             className={
-              validationErrors.recommendationType ? "border-red-500" : ""
+              validationErrors.recommendationType ? "border-rd-error" : ""
             }
           />
 
           {validationErrors.recommendationType && (
-            <p className="text-red-600 text-sm mt-1" role="alert">
+            <p className="text-rd-error text-sm mt-1" role="alert">
               {validationErrors.recommendationType}
             </p>
           )}
         </div>
 
-        <div className="flex gap-4 pt-6 border-t border-gray-200">
+        <div className="flex gap-4 pt-6 border-t border-rd-gray">
           <SubmitButton
             text={isSubmitting ? "Processando..." : "Obter Recomendações"}
             disabled={disabled || isSubmitting}
@@ -259,7 +259,7 @@ const RecommendationForm = memo(
             type="button"
             onClick={handleReset}
             disabled={disabled || isSubmitting}
-            className="flex-1 bg-gray-500 text-white py-3 px-6 rounded-lg font-medium hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 bg-rd-gray text-rd-white py-3 px-6 rounded-lg font-medium hover:bg-rd-blue-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             data-testid="reset-button"
           >
             Limpar Formulário
