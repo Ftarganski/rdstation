@@ -1248,7 +1248,7 @@ O Sistema de Recomendações RD Station foi completamente refatorado seguindo as
 - ✅ Clean Code em toda base
 - ✅ Tailwind CSS demonstrado (Req. 3.1)
 
-### **🚀 Status Final do Projeto (2025)**
+### **🚀 Status Final do Projeto**
 
 O código está preparado para:
 
