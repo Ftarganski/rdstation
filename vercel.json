@@ -12,6 +12,14 @@
 	],
 	"routes": [
 		{
+			"src": "/api/products",
+			"dest": "/api/products"
+		},
+		{
+			"src": "/api/recommendations",
+			"dest": "/api/recommendations"
+		},
+		{
 			"src": "/api/(.*)",
 			"dest": "/api/$1"
 		},

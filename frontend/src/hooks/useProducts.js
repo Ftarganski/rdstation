@@ -39,8 +39,13 @@ const useProducts = () => {
 
       const productsData = await getProducts();
 
+      // Log para debugging em produção
+      console.log('Dados recebidos da API:', productsData);
+      console.log('Tipo dos dados:', typeof productsData);
+      console.log('É array?', Array.isArray(productsData));
+
       if (!Array.isArray(productsData)) {
-        throw new Error('Formato de dados inválido recebido da API');
+        throw new Error(`Formato de dados inválido recebido da API. Recebido: ${typeof productsData}. Dados: ${JSON.stringify(productsData)}`);
       }
 
       setProducts(productsData);
