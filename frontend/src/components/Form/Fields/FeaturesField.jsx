@@ -6,8 +6,8 @@
 
 import PropTypes from "prop-types";
 import { memo } from "react";
+import { Input } from "../../";
 import { useMultipleSelection } from "../../../hooks";
-import { Input } from "../../components";
 
 /**
  * Componente para seleção múltipla de funcionalidades

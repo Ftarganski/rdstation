@@ -6,11 +6,6 @@
 
 import PropTypes from "prop-types";
 import { memo, useCallback, useState } from "react";
-import { useProducts } from "../../hooks";
-import {
-  normalizeFormData,
-  validateFormData,
-} from "../../utils/formValidation";
 import {
   ErrorState,
   FeaturesField,
@@ -18,7 +13,12 @@ import {
   PreferencesField,
   RecommendationTypeField,
   SubmitButton,
-} from "../components";
+} from "../";
+import { useProducts } from "../../hooks";
+import {
+  normalizeFormData,
+  validateFormData,
+} from "../../utils/formValidation";
 
 /**
  * Hook customizado para gerenciar estado do formulário de recomendações

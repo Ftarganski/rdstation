@@ -6,12 +6,12 @@
 
 import PropTypes from "prop-types";
 import { memo } from "react";
+import { Input } from "../../";
 import {
   RECOMMENDATION_TYPES,
   RECOMMENDATION_TYPE_LABELS,
 } from "../../../constants/formConstants";
 import { useSingleSelection } from "../../../hooks";
-import { Input } from "../../components";
 
 /**
  * Componente para seleção do tipo de recomendação

@@ -11,7 +11,7 @@ import {
   ProductModal,
   RecommendationForm,
   RecommendationList,
-} from "./components/components";
+} from "./components";
 import { useProducts } from "./hooks";
 import { recommendationService } from "./services";
 

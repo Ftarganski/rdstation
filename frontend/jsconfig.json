@@ -2,7 +2,16 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "@/*": ["*"]
+      "@/components/*": ["components/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/services/*": ["services/*"],
+      "@/utils/*": ["utils/*"],
+      "@/constants/*": ["constants/*"],
+      "@/components": ["components"],
+      "@/hooks": ["hooks"],
+      "@/services": ["services"],
+      "@/utils": ["utils"],
+      "@/constants": ["constants"]
     }
   },
   "include": ["src"]
