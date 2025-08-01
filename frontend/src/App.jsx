@@ -6,6 +6,7 @@
 
 import {
   ErrorState,
+  Header,
   LoadingState,
   ProductModal,
   RecommendationForm,
@@ -206,64 +207,61 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-rd-gray-light">
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-rd-blue-dark mb-4">
-            Recomendador de Produtos RD Station
-          </h1>
-          <p className="text-lg text-rd-gray">
-            Descubra quais soluções da RD Station são ideais para o seu negócio.
-          </p>
-        </header>
+    <>
+      {/* Header fixo */}
+      <Header />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <section>
-            <div className="bg-rd-white rounded-xl shadow-lg p-6 ">
-              <header className="border-b border-rd-gray pb-4 mb-6">
-                <h2 className="text-2xl font-semibold text-rd-blue-dark mb-2">
-                  Preencha suas Preferências
-                </h2>
-                <p className="text-rd-gray">
-                  Nos conte sobre suas necessidades para personalizar as
-                  recomendações
-                </p>
-              </header>
-
-              <RecommendationForm
-                onSubmit={handleGenerateRecommendations}
-                isProcessing={isProcessingRecommendations}
-                isDisabled={isLoadingProducts || hasProductsError}
-              />
-            </div>
-          </section>
-
-          <section>
-            <div className="bg-rd-white rounded-xl shadow-lg p-6 ">
-              <header className="border-b border-rd-gray pb-4 mb-6">
-                <h2 className="text-2xl font-semibold text-rd-blue-dark mb-2">
-                  Recomendações Personalizadas
-                </h2>
-                {recommendations.length > 0 && (
+      {/* Conteúdo principal com padding-top para compensar o header fixo */}
+      <div className="min-h-screen bg-rd-gray-light pt-24">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <section>
+              <div className="bg-rd-white rounded-xl shadow-lg p-6 ">
+                <header className="border-b border-rd-gray pb-4 mb-6">
+                  <h2 className="text-2xl font-semibold text-rd-blue-dark mb-2">
+                    Preencha suas Preferências
+                  </h2>
                   <p className="text-rd-gray">
-                    {recommendations.length} recomendações encontradas
+                    Nos conte sobre suas necessidades para personalizar as
+                    recomendações
                   </p>
-                )}
-              </header>
+                </header>
 
-              {renderRecommendationContent()}
-            </div>
-          </section>
+                <RecommendationForm
+                  onSubmit={handleGenerateRecommendations}
+                  isProcessing={isProcessingRecommendations}
+                  isDisabled={isLoadingProducts || hasProductsError}
+                />
+              </div>
+            </section>
+
+            <section>
+              <div className="bg-rd-white rounded-xl shadow-lg p-6 ">
+                <header className="border-b border-rd-gray pb-4 mb-6">
+                  <h2 className="text-2xl font-semibold text-rd-blue-dark mb-2">
+                    Recomendações Personalizadas
+                  </h2>
+                  {recommendations.length > 0 && (
+                    <p className="text-rd-gray">
+                      {recommendations.length} recomendações encontradas
+                    </p>
+                  )}
+                </header>
+
+                {renderRecommendationContent()}
+              </div>
+            </section>
+          </div>
+
+          {/* Modal de Detalhes do Produto */}
+          <ProductModal
+            isOpen={isProductModalOpen}
+            onClose={handleCloseProductModal}
+            product={selectedProduct}
+          />
         </div>
-
-        {/* Modal de Detalhes do Produto */}
-        <ProductModal
-          isOpen={isProductModalOpen}
-          onClose={handleCloseProductModal}
-          product={selectedProduct}
-        />
       </div>
-    </div>
+    </>
   );
 }
 

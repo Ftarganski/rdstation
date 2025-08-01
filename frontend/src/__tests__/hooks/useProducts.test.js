@@ -99,7 +99,7 @@ describe('useProducts Hook', () => {
     expect(getProducts).toHaveBeenCalledTimes(1);
   });
 
-  test('deve extrair amostras de preferências', async () => {
+  test('deve extrair todas as preferências', async () => {
     getProducts.mockResolvedValue(mockProductsData);
 
     const { result } = renderHook(() => useProducts());
@@ -114,11 +114,14 @@ describe('useProducts Hook', () => {
       expect(todasPreferencias).toContain(pref);
     });
 
-    // Verificar limite máximo (2 por produto)
-    expect(result.current.availablePreferences.length).toBeLessThanOrEqual(4);
+    // Deve incluir todas as preferências únicas (não limitado a 2 por produto)
+    const preferenciasUnicas = [...new Set(todasPreferencias)];
+    expect(result.current.availablePreferences.length).toBe(
+      preferenciasUnicas.length
+    );
   });
 
-  test('deve extrair amostras de features', async () => {
+  test('deve extrair todas as funcionalidades', async () => {
     getProducts.mockResolvedValue(mockProductsData);
 
     const { result } = renderHook(() => useProducts());
@@ -133,8 +136,9 @@ describe('useProducts Hook', () => {
       expect(todasFeatures).toContain(feature);
     });
 
-    // Verificar limite máximo (2 por produto)
-    expect(result.current.availableFeatures.length).toBeLessThanOrEqual(4);
+    // Deve incluir todas as funcionalidades únicas (não limitado a 2 por produto)
+    const featuresUnicas = [...new Set(todasFeatures)];
+    expect(result.current.availableFeatures.length).toBe(featuresUnicas.length);
   });
 
   test('deve gerenciar estado de loading corretamente', async () => {
@@ -353,5 +357,41 @@ describe('useProducts Hook', () => {
     expect(result.current.errorMessage).toBe(
       'Erro desconhecido ao carregar produtos'
     );
+  });
+
+  test('deve ordenar preferências em ordem alfabética crescente', async () => {
+    getProducts.mockResolvedValue(mockProductsData);
+
+    const { result } = renderHook(() => useProducts());
+
+    await waitFor(() => {
+      expect(result.current.availablePreferences.length).toBeGreaterThan(0);
+    });
+
+    // Verificar se as preferências estão em ordem alfabética
+    const preferences = result.current.availablePreferences;
+    const sortedPreferences = [...preferences].sort((a, b) =>
+      a.localeCompare(b, 'pt-BR', { sensitivity: 'base' })
+    );
+
+    expect(preferences).toEqual(sortedPreferences);
+  });
+
+  test('deve ordenar funcionalidades em ordem alfabética crescente', async () => {
+    getProducts.mockResolvedValue(mockProductsData);
+
+    const { result } = renderHook(() => useProducts());
+
+    await waitFor(() => {
+      expect(result.current.availableFeatures.length).toBeGreaterThan(0);
+    });
+
+    // Verificar se as funcionalidades estão em ordem alfabética
+    const features = result.current.availableFeatures;
+    const sortedFeatures = [...features].sort((a, b) =>
+      a.localeCompare(b, 'pt-BR', { sensitivity: 'base' })
+    );
+
+    expect(features).toEqual(sortedFeatures);
   });
 });

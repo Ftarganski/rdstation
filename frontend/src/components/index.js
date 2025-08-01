@@ -17,6 +17,7 @@ export { default as ProductModal } from './ProductModal/ProductModal';
 export { default as RecommendationList } from './RecommendationList/RecommendationList';
 
 // Shared components
+export { default as Header } from './shared/Header';
 export { default as Input } from './shared/Input';
 export { default as Modal } from './shared/Modal';
 export { EmptyState, ErrorState, LoadingState } from './shared/StateComponents';
