@@ -10,6 +10,20 @@ import getProducts from '../services/product.service';
 // Mock do serviço de produtos
 jest.mock('../services/product.service');
 
+// Suprimir console.error e console.warn durante os testes
+const originalConsoleError = console.error;
+const originalConsoleWarn = console.warn;
+
+beforeAll(() => {
+  console.error = jest.fn();
+  console.warn = jest.fn();
+});
+
+afterAll(() => {
+  console.error = originalConsoleError;
+  console.warn = originalConsoleWarn;
+});
+
 // Mock dos dados de produtos
 const mockProductsData = [
   {

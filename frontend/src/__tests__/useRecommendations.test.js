@@ -12,6 +12,20 @@ jest.mock('../services/recommendation.service', () => ({
   getRecommendations: jest.fn(),
 }));
 
+// Suprimir console.error e console.warn durante os testes
+const originalConsoleError = console.error;
+const originalConsoleWarn = console.warn;
+
+beforeAll(() => {
+  console.error = jest.fn();
+  console.warn = jest.fn();
+});
+
+afterAll(() => {
+  console.error = originalConsoleError;
+  console.warn = originalConsoleWarn;
+});
+
 // Dados mock para testes
 const mockProducts = [
   {
