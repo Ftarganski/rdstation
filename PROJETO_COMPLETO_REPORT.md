@@ -262,7 +262,7 @@ Quando dois produtos têm o mesmo score:
 ```
 
 1. **Primeiro critério**: Score mais alto
-2. **Segundo critério**: ID menor (produto mais antigo)
+2. **Segundo critério**: ID maior (produto mais novo)
 
 #### **📈 Exemplos Práticos**
 
@@ -281,7 +281,7 @@ Produto A: 2 prefs + 1 feat = Score 3 ⭐
 Produto B: 1 pref + 2 feats = Score 3 ⭐
 Produto C: 1 pref + 0 feats = Score 1
 
-// Output: [Produto A] (menor ID em caso de empate)
+// Output: [Produto A] (maior ID em caso de empate)
 ```
 
 **Exemplo 2: Múltiplas Recomendações**
@@ -654,15 +654,15 @@ File sizes after gzip:
 
 ```
 🎯 RDSTATION RECOMMENDATION SYSTEM
-├── 📁 _mocks_/                 # Mocks dos testes
-├── 📁 _tests_/                 # Testes do sistema
+├── 📁 __mocks__/               # Mocks dos testes
+├── 📁 __tests__/               # Testes do sistema
 ├── 📁 components/
-│   ├── 📁 shared/              # UI reutilizável (SOLID)
 │   ├── 📁 Form/                # Formulário modular
-│   └── 📁 RecommendationList/  # Retorno das recomendações
+│   ├── 📁 RecommendationList/  # Retorno das recomendações
+│   └── 📁 shared/              # UI reutilizável (SOLID)
 ├── 📁 constants/               # Configurações centralizadas
 ├── 📁 hooks/                   # Hooks genéricos (DRY)
-├── 📁 services/                # Strategy Pattern
+├── 📁 services/                # Regras de negócio
 ├── 📁 utils/                   # Utilitários reutilizáveis
 └── 📄 styles.css               # Tailwind + customizações
 ```
@@ -689,13 +689,6 @@ File sizes after gzip:
 - Algoritmos de recomendação extensíveis
 - Design system pronto para crescimento
 - Performance otimizada
-
-#### **👥 Team Collaboration:**
-
-- Convenções claras estabelecidas
-- Padrões consistentes
-- Documentação integrada
-- Onboarding facilitado
 
 ---
 
