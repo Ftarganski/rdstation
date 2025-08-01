@@ -4,6 +4,7 @@
  */
 
 import { act, renderHook } from '@testing-library/react';
+import { vi } from 'vitest';
 import useForm from '../../hooks/useForm';
 
 // Suprimir console.error e console.warn durante os testes
@@ -11,8 +12,8 @@ const originalConsoleError = console.error;
 const originalConsoleWarn = console.warn;
 
 beforeAll(() => {
-  console.error = jest.fn();
-  console.warn = jest.fn();
+  console.error = vi.fn();
+  console.warn = vi.fn();
 });
 
 afterAll(() => {

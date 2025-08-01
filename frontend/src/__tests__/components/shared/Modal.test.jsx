@@ -4,10 +4,11 @@
 
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
+import { vi } from 'vitest';
 import { Modal } from '../../../components';
 
 describe('Modal', () => {
-  const mockOnClose = jest.fn();
+  const mockOnClose = vi.fn();
   const defaultProps = {
     isOpen: true,
     onClose: mockOnClose,

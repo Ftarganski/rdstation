@@ -4,19 +4,20 @@
  */
 
 import { act, renderHook, waitFor } from '@testing-library/react';
+import { vi } from 'vitest';
 import useProducts from '../../hooks/useProducts';
 import getProducts from '../../services/product.service';
 
 // Mock do serviço de produtos
-jest.mock('../../services/product.service.js');
+vi.mock('../../services/product.service.js');
 
 // Suprimir console.error e console.warn durante os testes
 const originalConsoleError = console.error;
 const originalConsoleWarn = console.warn;
 
 beforeAll(() => {
-  console.error = jest.fn();
-  console.warn = jest.fn();
+  console.error = vi.fn();
+  console.warn = vi.fn();
 });
 
 afterAll(() => {
@@ -66,7 +67,7 @@ const mockProductsData = [
 
 describe('useProducts Hook', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   test('deve inicializar com estado padrão', async () => {

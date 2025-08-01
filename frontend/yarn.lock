@@ -2451,7 +2451,7 @@
     magic-string "^0.30.17"
     pathe "^2.0.3"
 
-"@vitest/spy@3.2.4":
+"@vitest/spy@^3.2.4", "@vitest/spy@3.2.4":
   version "3.2.4"
   resolved "https://registry.npmjs.org/@vitest/spy/-/spy-3.2.4.tgz"
   integrity sha512-vAfasCOe6AIK70iP5UD11Ac4siNUNJ9i/9PZ3NKx07sG6sUxeag1LWdNrMWeKKYBLlzuK+Gn65Yd5nyL6ds+nw==
