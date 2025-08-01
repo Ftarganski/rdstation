@@ -3,6 +3,7 @@
  * Mostra métricas relevantes de forma visual e atrativa
  */
 
+import { STATS_COLOR_TOKENS, STATS_TYPE_CONFIG } from "@/constants";
 import { Award, BarChart3, Target, TrendingUp } from "lucide-react";
 import PropTypes from "prop-types";
 import { memo } from "react";
@@ -22,29 +23,29 @@ const StatCard = memo(
     "data-testid": testId,
   }) => {
     const colorVariants = {
-      blue: {
+      [STATS_COLOR_TOKENS.PRIMARY]: {
         bg: "bg-rd-sky-light",
         icon: "text-rd-blue",
         text: "text-rd-blue-dark",
         border: "border-rd-blue",
       },
-      cyan: {
+      [STATS_COLOR_TOKENS.PERFORMANCE]: {
         bg: "bg-rd-cyan-light",
         icon: "text-rd-cyan",
         text: "text-rd-blue-dark",
         border: "border-rd-cyan",
       },
-      green: {
-        bg: "bg-green-50",
-        icon: "text-green-600",
-        text: "text-green-800",
-        border: "border-green-200",
+      [STATS_COLOR_TOKENS.SUCCESS]: {
+        bg: "bg-rd-cyan-light",
+        icon: "text-rd-green",
+        text: "text-rd-blue-dark",
+        border: "border-rd-green",
       },
-      purple: {
-        bg: "bg-purple-50",
-        icon: "text-purple-600",
-        text: "text-purple-800",
-        border: "border-purple-200",
+      [STATS_COLOR_TOKENS.ANALYSIS]: {
+        bg: "bg-rd-sky-light",
+        icon: "text-rd-blue-light",
+        text: "text-rd-blue-dark",
+        border: "border-rd-blue-light",
       },
     };
 
@@ -72,10 +73,10 @@ const StatCard = memo(
                     ml-2 flex items-center text-xs font-medium
                     ${
                       trend > 0
-                        ? "text-green-600"
+                        ? "text-rd-green"
                         : trend < 0
-                        ? "text-red-600"
-                        : "text-gray-500"
+                        ? "text-rd-red"
+                        : "text-rd-gray"
                     }
                   `}
                 >
@@ -140,7 +141,7 @@ const StatsCards = memo(
         value: totalRecommendations,
         icon: Target,
         description: "Produtos encontrados",
-        color: "blue",
+        color: STATS_TYPE_CONFIG.RECOMMENDATIONS.colorToken,
         trend: totalRecommendations > 0 ? 12 : 0,
       },
       {
@@ -148,7 +149,7 @@ const StatsCards = memo(
         value: averageScore,
         icon: Award,
         description: "Relevância média",
-        color: "cyan",
+        color: STATS_TYPE_CONFIG.AVERAGE_SCORE.colorToken,
         trend: averageScore > 7 ? 8 : averageScore > 5 ? 2 : -5,
       },
       {
@@ -156,7 +157,7 @@ const StatsCards = memo(
         value: uniqueCategories,
         icon: BarChart3,
         description: "Tipos diferentes",
-        color: "green",
+        color: STATS_TYPE_CONFIG.CATEGORIES.colorToken,
         trend: uniqueCategories > 1 ? 15 : 0,
       },
       {
@@ -164,7 +165,7 @@ const StatsCards = memo(
         value: `${matchPercentage}%`,
         icon: TrendingUp,
         description: "Compatibilidade",
-        color: "purple",
+        color: STATS_TYPE_CONFIG.MATCH_RATE.colorToken,
         trend: matchPercentage > 50 ? 10 : matchPercentage > 25 ? 0 : -3,
       },
     ];
@@ -237,7 +238,12 @@ StatCard.propTypes = {
   icon: PropTypes.elementType.isRequired,
   description: PropTypes.string,
   trend: PropTypes.number,
-  color: PropTypes.oneOf(["blue", "cyan", "green", "purple"]),
+  color: PropTypes.oneOf([
+    STATS_COLOR_TOKENS.PRIMARY,
+    STATS_COLOR_TOKENS.PERFORMANCE,
+    STATS_COLOR_TOKENS.SUCCESS,
+    STATS_COLOR_TOKENS.ANALYSIS,
+  ]),
   className: PropTypes.string,
   "data-testid": PropTypes.string,
 };
