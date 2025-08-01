@@ -77,6 +77,7 @@ const Modal = ({
         className="absolute inset-0 bg-black bg-opacity-50 transition-opacity"
         onClick={handleOverlayClick}
         aria-hidden="true"
+        data-testid="modal-overlay"
       />
 
       {/* Modal Content */}

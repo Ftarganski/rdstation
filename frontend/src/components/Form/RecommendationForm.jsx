@@ -15,7 +15,7 @@ import { ErrorState, LoadingState } from "../shared/StateComponents";
 import FeaturesField from "./Fields/FeaturesField";
 import PreferencesField from "./Fields/PreferencesField";
 import RecommendationTypeField from "./Fields/RecommendationTypeField";
-import { SubmitButton } from "./SubmitButton";
+import SubmitButton from "./SubmitButton/SubmitButton";
 
 /**
  * Hook customizado para gerenciar estado do formulário de recomendações

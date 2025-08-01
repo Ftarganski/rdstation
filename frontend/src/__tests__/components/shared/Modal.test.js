@@ -63,12 +63,11 @@ describe('Modal', () => {
   it('should call onClose when overlay is clicked', () => {
     render(<Modal {...defaultProps} />);
 
-    const overlay = screen.getByTestId('modal').firstChild;
+    const overlay = screen.getByTestId('modal-overlay');
     fireEvent.click(overlay);
 
     expect(mockOnClose).toHaveBeenCalledTimes(1);
   });
-
   it('should not call onClose when modal content is clicked', () => {
     render(<Modal {...defaultProps} />);
 
@@ -81,12 +80,11 @@ describe('Modal', () => {
   it('should not call onClose on overlay click when closeOnOverlayClick is false', () => {
     render(<Modal {...defaultProps} closeOnOverlayClick={false} />);
 
-    const overlay = screen.getByTestId('modal').firstChild;
+    const overlay = screen.getByTestId('modal-overlay');
     fireEvent.click(overlay);
 
     expect(mockOnClose).not.toHaveBeenCalled();
   });
-
   it('should not call onClose on escape when closeOnEscape is false', () => {
     render(<Modal {...defaultProps} closeOnEscape={false} />);
 
