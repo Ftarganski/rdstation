@@ -4,12 +4,13 @@
  * Separação clara de responsabilidades
  */
 
-import { useCallback, useState } from 'react';
-import RecommendationForm from './components/Form/RecommendationForm';
-import RecommendationList from './components/RecommendationList/RecommendationList.jsx';
-import { ErrorState, LoadingState } from './components/shared/StateComponents';
-import { useProducts } from './hooks';
-import recommendationService from './services/recommendation.service';
+import { useCallback, useState } from "react";
+import RecommendationForm from "./components/Form/RecommendationForm";
+import ProductModal from "./components/ProductModal/ProductModal";
+import RecommendationList from "./components/RecommendationList/RecommendationList.jsx";
+import { ErrorState, LoadingState } from "./components/shared/StateComponents";
+import { useProducts } from "./hooks";
+import recommendationService from "./services/recommendation.service";
 
 /**
  * Componente principal da aplicação
@@ -20,6 +21,10 @@ function App() {
   const [isProcessingRecommendations, setIsProcessingRecommendations] =
     useState(false);
   const [recommendationError, setRecommendationError] = useState(null);
+
+  // Estados para o modal de produto
+  const [isProductModalOpen, setIsProductModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const {
     products,
@@ -36,7 +41,7 @@ function App() {
   const handleGenerateRecommendations = useCallback(
     async (formData) => {
       if (!products || products.length === 0) {
-        setRecommendationError('Nenhum produto disponível para recomendação');
+        setRecommendationError("Nenhum produto disponível para recomendação");
         return;
       }
 
@@ -53,12 +58,12 @@ function App() {
 
         if (result.length === 0) {
           setRecommendationError(
-            'Nenhuma recomendação encontrada para os critérios selecionados'
+            "Nenhuma recomendação encontrada para os critérios selecionados"
           );
         }
       } catch (error) {
-        console.error('Erro ao gerar recomendações:', error);
-        setRecommendationError('Erro ao gerar recomendações. Tente novamente.');
+        console.error("Erro ao gerar recomendações:", error);
+        setRecommendationError("Erro ao gerar recomendações. Tente novamente.");
         setRecommendations([]);
       } finally {
         setIsProcessingRecommendations(false);
@@ -82,6 +87,23 @@ function App() {
    */
   const handleSelectRecommendation = useCallback((recommendation) => {
     setSelectedRecommendation(recommendation);
+  }, []);
+
+  /**
+   * Abre o modal com os detalhes do produto
+   * @param {Object} product - Produto selecionado
+   */
+  const handleProductCardClick = useCallback((product) => {
+    setSelectedProduct(product);
+    setIsProductModalOpen(true);
+  }, []);
+
+  /**
+   * Fecha o modal de produto
+   */
+  const handleCloseProductModal = useCallback(() => {
+    setIsProductModalOpen(false);
+    setSelectedProduct(null);
   }, []);
 
   /**
@@ -139,8 +161,9 @@ function App() {
     return (
       <RecommendationList
         recommendations={recommendations}
-        selectedRecommendation={selectedRecommendation}
-        onSelectRecommendation={handleSelectRecommendation}
+        selectedItem={selectedRecommendation}
+        onItemSelect={handleSelectRecommendation}
+        onItemCardClick={handleProductCardClick}
       />
     );
   };
@@ -187,7 +210,7 @@ function App() {
             Sistema de Recomendações RD Station
           </h1>
           <p className="text-lg text-gray-600">
-            Encontre as melhores soluções para suas necessidades
+            Descubra quais soluções da RD Station são ideais para o seu negócio.
           </p>
         </header>
 
@@ -229,6 +252,13 @@ function App() {
             </div>
           </section>
         </div>
+
+        {/* Modal de Detalhes do Produto */}
+        <ProductModal
+          isOpen={isProductModalOpen}
+          onClose={handleCloseProductModal}
+          product={selectedProduct}
+        />
       </div>
     </div>
   );
