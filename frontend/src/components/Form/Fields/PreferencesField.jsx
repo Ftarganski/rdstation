@@ -4,10 +4,10 @@
  * Extensível e reutilizável
  */
 
+import { Input } from "@/components";
+import { useMultipleSelection } from "@/hooks";
 import PropTypes from "prop-types";
 import { memo } from "react";
-import { Input } from "../../";
-import { useMultipleSelection } from "../../../hooks";
 
 /**
  * Componente para seleção múltipla de preferências

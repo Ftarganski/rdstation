@@ -4,14 +4,14 @@
  * Extensível e configurável
  */
 
-import PropTypes from "prop-types";
-import { memo } from "react";
-import { Input } from "../../";
+import { Input } from "@/components";
 import {
   RECOMMENDATION_TYPES,
   RECOMMENDATION_TYPE_LABELS,
-} from "../../../constants/formConstants";
-import { useSingleSelection } from "../../../hooks";
+} from "@/constants/formConstants";
+import { useSingleSelection } from "@/hooks";
+import PropTypes from "prop-types";
+import { memo } from "react";
 
 /**
  * Componente para seleção do tipo de recomendação

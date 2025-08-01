@@ -4,16 +4,16 @@
  * Separação clara de responsabilidades
  */
 
-import { useCallback, useState } from "react";
 import {
   ErrorState,
   LoadingState,
   ProductModal,
   RecommendationForm,
   RecommendationList,
-} from "./components";
-import { useProducts } from "./hooks";
-import { recommendationService } from "./services";
+} from "@/components";
+import { useProducts } from "@/hooks";
+import { recommendationService } from "@/services";
+import { useCallback, useState } from "react";
 
 /**
  * Componente principal da aplicação
@@ -210,7 +210,7 @@ function App() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <header className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Sistema de Recomendações RD Station
+            Recomendador de Produtos RD Station
           </h1>
           <p className="text-lg text-gray-600">
             Descubra quais soluções da RD Station são ideais para o seu negócio.

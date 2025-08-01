@@ -4,8 +4,6 @@
  * Utiliza composição e separação de responsabilidades
  */
 
-import PropTypes from "prop-types";
-import { memo, useCallback, useState } from "react";
 import {
   ErrorState,
   FeaturesField,
@@ -13,12 +11,11 @@ import {
   PreferencesField,
   RecommendationTypeField,
   SubmitButton,
-} from "../";
-import { useProducts } from "../../hooks";
-import {
-  normalizeFormData,
-  validateFormData,
-} from "../../utils/formValidation";
+} from "@/components";
+import { useProducts } from "@/hooks";
+import { normalizeFormData, validateFormData } from "@/utils/formValidation";
+import PropTypes from "prop-types";
+import { memo, useCallback, useState } from "react";
 
 /**
  * Hook customizado para gerenciar estado do formulário de recomendações

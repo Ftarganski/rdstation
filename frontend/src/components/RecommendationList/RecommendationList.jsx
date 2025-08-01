@@ -4,9 +4,9 @@
  * Extensível e com boa UX
  */
 
+import { EmptyState, ErrorState, LoadingState } from "@/components";
 import PropTypes from "prop-types";
 import { memo } from "react";
-import { EmptyState, ErrorState, LoadingState } from "../";
 
 /**
  * Componente para renderizar um item individual de recomendação

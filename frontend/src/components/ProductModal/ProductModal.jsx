@@ -3,8 +3,8 @@
  * Exibe informações completas de um produto específico
  */
 
+import { Modal } from "@/components";
 import PropTypes from "prop-types";
-import { Modal } from "../";
 
 /**
  * Componente de tag/badge reutilizável
