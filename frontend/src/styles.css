@@ -14,23 +14,25 @@
    ========================================================================== */
 :root {
   /* Primary Brand Colors */
-  --rd-blue: #2563eb;
-  --rd-blue-dark: #1d4ed8;
-  --rd-blue-light: #dbeafe;
+  --rd-blue: #00d4fe; /* Vivid sky blue - Primary */
+  --rd-blue-dark: #003c5b; /* Indigo dye - Dark blue */
+  --rd-blue-light: #7aeefa; /* Electric blue - Light blue */
 
   /* Secondary Colors */
-  --rd-green: #10b981;
-  --rd-green-light: #d1fae5;
-  --rd-purple: #8b5cf6;
-  --rd-purple-light: #ede9fe;
+  --rd-cyan: #7aeefa; /* Electric blue - Secondary accent */
+  --rd-cyan-light: #e4fbfe; /* Electric blue 900 - Very light cyan */
+  --rd-sky: #00d4fe; /* Vivid sky blue - Sky tone */
+  --rd-sky-light: #ccf6ff; /* Vivid sky blue 900 - Light sky */
 
   /* Neutral Colors */
-  --rd-gray: #6b7280;
-  --rd-gray-light: #f3f4f6;
+  --rd-gray: #eeeeee; /* Anti-flash white - Light gray */
+  --rd-gray-light: #fbfbfb; /* Anti-flash white 900 - Very light gray */
+  --rd-white: #fefefe; /* White - Pure white */
 
-  /* State Colors */
-  --rd-red: #ef4444;
-  --rd-yellow: #f59e0b;
+  /* State Colors (mantendo compatibilidade) */
+  --rd-red: #ef4444; /* Error state */
+  --rd-yellow: #f59e0b; /* Warning state */
+  --rd-green: #10b981; /* Success state */
 }
 
 /* ==========================================================================
@@ -43,7 +45,7 @@
   }
 
   .rd-radio {
-    accent-color: var(--rd-purple);
+    accent-color: var(--rd-cyan);
   }
 }
 
@@ -55,28 +57,49 @@
   .text-rd-blue {
     color: var(--rd-blue);
   }
-  .text-rd-green {
-    color: var(--rd-green);
+  .text-rd-blue-dark {
+    color: var(--rd-blue-dark);
   }
-  .text-rd-purple {
-    color: var(--rd-purple);
+  .text-rd-cyan {
+    color: var(--rd-cyan);
+  }
+  .text-rd-sky {
+    color: var(--rd-sky);
   }
 
   .bg-rd-blue {
     background-color: var(--rd-blue);
   }
+  .bg-rd-blue-dark {
+    background-color: var(--rd-blue-dark);
+  }
   .bg-rd-blue-light {
     background-color: var(--rd-blue-light);
   }
-  .bg-rd-green-light {
-    background-color: var(--rd-green-light);
+  .bg-rd-cyan-light {
+    background-color: var(--rd-cyan-light);
   }
-  .bg-rd-purple-light {
-    background-color: var(--rd-purple-light);
+  .bg-rd-sky-light {
+    background-color: var(--rd-sky-light);
+  }
+  .bg-rd-gray {
+    background-color: var(--rd-gray);
+  }
+  .bg-rd-gray-light {
+    background-color: var(--rd-gray-light);
+  }
+  .bg-rd-white {
+    background-color: var(--rd-white);
   }
 
   .border-rd-blue {
     border-color: var(--rd-blue);
+  }
+  .border-rd-blue-dark {
+    border-color: var(--rd-blue-dark);
+  }
+  .border-rd-cyan {
+    border-color: var(--rd-cyan);
   }
 
   /* Accessibility helper */
