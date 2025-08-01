@@ -211,7 +211,7 @@ const StatsCards = memo(
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-rd-gray">
               <div>
-                • Score médio de {averageScore}/10 indica{" "}
+                • Score médio de {averageScore}/6 indica{" "}
                 {averageScore > 7
                   ? "excelente compatibilidade"
                   : averageScore > 5
