@@ -28,7 +28,7 @@ const SubmitButton = memo(
 
     const variantClasses = {
       primary:
-        "bg-rd-blue hover:bg-rd-blue-dark text-rd-white focus:ring-rd-blue disabled:opacity-60",
+        "bg-rd-blue-dark hover:bg-rd-blue text-rd-white focus:ring-rd-blue disabled:opacity-60",
       secondary:
         "bg-rd-gray hover:bg-rd-blue-dark text-rd-white focus:ring-rd-gray disabled:opacity-60",
       success:

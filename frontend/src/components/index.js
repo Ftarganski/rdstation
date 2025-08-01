@@ -20,5 +20,6 @@ export { default as RecommendationList } from './RecommendationList/Recommendati
 export { default as Header } from './shared/Header';
 export { default as Input } from './shared/Input';
 export { default as Modal } from './shared/Modal';
+export { default as ScrollToTop } from './shared/ScrollToTop';
 export { EmptyState, ErrorState, LoadingState } from './shared/StateComponents';
 export { default as ThemeSwitch } from './shared/ThemeSwitch';

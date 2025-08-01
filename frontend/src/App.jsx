@@ -11,6 +11,7 @@ import {
   ProductModal,
   RecommendationForm,
   RecommendationList,
+  ScrollToTop,
 } from "@/components";
 import { ThemeProvider } from "@/contexts";
 import { useProducts } from "@/hooks";
@@ -263,6 +264,9 @@ function App() {
             />
           </div>
         </div>
+
+        {/* Botão flutuante de voltar ao topo */}
+        <ScrollToTop />
       </>
     </ThemeProvider>
   );
