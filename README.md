@@ -19,7 +19,7 @@ _Desenvolvido com arquitetura moderna, princípios SOLID e Tailwind CSS_
 
 > **📋 Para entender completamente o desenvolvimento e as melhorias implementadas neste projeto, leia o relatório técnico completo:**
 >
-> ### 📄 [**PROJETO_COMPLETO_REPORT.md**](./PROJETO_COMPLETO_REPORT.md)
+> ### 📄 [**REPORT.md**](./REPORT.md)
 >
 > Este relatório documenta todo o processo de refatoração, aplicação dos princípios SOLID, DRY, Clean Code, implementação da lógica de recomendação, consolidação CSS e demais ajustes. É **essencial** para compreender a arquitetura, decisões técnicas e qualidade do código implementado.
 
