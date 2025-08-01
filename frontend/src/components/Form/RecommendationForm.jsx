@@ -194,7 +194,7 @@ const RecommendationForm = memo(
 
     return (
       <form
-        className={`max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg space-y-6 ${className}`}
+        className={`max-w-2xl mx-auto p-6 rounded-lg space-y-6 ${className}`}
         onSubmit={handleSubmit}
         noValidate
         data-testid={testId}
