@@ -10,6 +10,8 @@
 
 **Sistema inteligente de recomendação de produtos RD Station**
 
+Deploy em [RD Station](https://rdstation-ftdev.vercel.app/)
+
 _Desenvolvido com arquitetura moderna, princípios SOLID e Tailwind CSS_
 
 </div>
