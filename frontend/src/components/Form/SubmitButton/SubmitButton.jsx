@@ -28,11 +28,11 @@ const SubmitButton = memo(
 
     const variantClasses = {
       primary:
-        "bg-blue-600 hover:bg-blue-700 text-white focus:ring-blue-500 disabled:bg-blue-300",
+        "bg-rd-blue hover:bg-rd-blue-dark text-rd-white focus:ring-rd-blue disabled:opacity-60",
       secondary:
-        "bg-gray-600 hover:bg-gray-700 text-white focus:ring-gray-500 disabled:bg-gray-300",
+        "bg-rd-gray hover:bg-rd-blue-dark text-rd-white focus:ring-rd-gray disabled:opacity-60",
       success:
-        "bg-green-600 hover:bg-green-700 text-white focus:ring-green-500 disabled:bg-green-300",
+        "bg-rd-cyan hover:bg-rd-blue text-rd-white focus:ring-rd-cyan disabled:opacity-60",
       danger:
         "bg-red-600 hover:bg-red-700 text-white focus:ring-red-500 disabled:bg-red-300",
     };

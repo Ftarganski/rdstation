@@ -56,11 +56,11 @@ const RecommendationTypeField = memo(
 
     return (
       <fieldset className={`mb-6 ${className}`} data-testid={testId}>
-        <legend className="text-lg font-semibold mb-3 text-gray-800">
+        <legend className="text-lg font-semibold mb-3 text-rd-blue-dark">
           {title}
           {required && <span className="text-red-500 ml-1">*</span>}
           {selectedValue && (
-            <span className="ml-2 text-sm text-purple-600 font-normal">
+            <span className="ml-2 text-sm text-rd-cyan font-normal">
               ({RECOMMENDATION_TYPE_LABELS[selectedValue]})
             </span>
           )}
@@ -72,8 +72,8 @@ const RecommendationTypeField = memo(
               key={option.value}
               className={`p-4 rounded-lg border-2 transition-all cursor-pointer ${
                 isSelected(option.value)
-                  ? "border-purple-500 bg-purple-50 shadow-md"
-                  : "border-gray-200 hover:border-purple-300 hover:bg-purple-25"
+                  ? "border-rd-cyan bg-rd-cyan-light shadow-md"
+                  : "border-rd-gray hover:border-rd-cyan hover:bg-rd-sky-light"
               }`}
               onClick={() => handleTypeChange(option.value)}
             >
@@ -85,15 +85,15 @@ const RecommendationTypeField = memo(
                 onChange={() => handleTypeChange(option.value)}
                 disabled={disabled}
                 className="items-start"
-                inputClassName="text-purple-600 focus:ring-purple-500 mt-1"
-                labelClassName="text-gray-800 font-medium"
+                inputClassName="text-rd-cyan focus:ring-rd-cyan mt-1"
+                labelClassName="text-rd-blue-dark font-medium"
                 data-testid={`recommendation-type-${index}`}
               >
                 <div className="flex flex-col">
-                  <span className="font-medium text-gray-800">
+                  <span className="font-medium text-rd-blue-dark">
                     {option.label}
                   </span>
-                  <span className="text-sm text-gray-600 mt-1">
+                  <span className="text-sm text-rd-gray mt-1">
                     {option.description}
                   </span>
                 </div>

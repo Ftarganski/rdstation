@@ -37,8 +37,8 @@ const Input = memo(
 
       const baseInputClasses =
         type === "radio"
-          ? "form-radio h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
-          : "form-checkbox h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300";
+          ? "form-radio h-4 w-4 text-rd-blue focus:ring-rd-blue border-rd-gray"
+          : "form-checkbox h-4 w-4 text-rd-blue focus:ring-rd-blue border-rd-gray";
 
       const handleChange = (event) => {
         if (onChange && !disabled) {
@@ -73,7 +73,7 @@ const Input = memo(
           {children && (
             <span
               className={`ml-2 select-none ${labelClassName} ${
-                disabled ? "text-gray-400" : "text-gray-700"
+                disabled ? "text-rd-gray" : "text-rd-blue-dark"
               }`}
             >
               {children}

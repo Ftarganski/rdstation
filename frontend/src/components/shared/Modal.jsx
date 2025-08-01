@@ -94,11 +94,11 @@ const Modal = ({
       >
         {/* Header */}
         {(title || showCloseButton) && (
-          <div className="flex items-center justify-between p-6 border-b border-gray-200 flex-shrink-0">
+          <div className="flex items-center justify-between p-6 border-b border-rd-gray flex-shrink-0">
             {title && (
               <h2
                 id="modal-title"
-                className="text-xl font-semibold text-gray-900"
+                className="text-xl font-semibold text-rd-blue-dark"
               >
                 {title}
               </h2>
@@ -106,7 +106,7 @@ const Modal = ({
             {showCloseButton && (
               <button
                 onClick={onClose}
-                className="text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100"
+                className="text-rd-gray hover:text-rd-blue-dark transition-colors p-1 rounded-full hover:bg-rd-gray-light"
                 aria-label="Fechar modal"
                 data-testid="modal-close-button"
               >

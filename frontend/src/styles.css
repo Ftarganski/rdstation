@@ -19,13 +19,13 @@
   --rd-blue-light: #7aeefa; /* Electric blue - Light blue */
 
   /* Secondary Colors */
-  --rd-cyan: #7aeefa; /* Electric blue - Secondary accent */
+  --rd-cyan: #31c1d1; /* Electric blue - Secondary accent */
   --rd-cyan-light: #e4fbfe; /* Electric blue 900 - Very light cyan */
   --rd-sky: #00d4fe; /* Vivid sky blue - Sky tone */
   --rd-sky-light: #ccf6ff; /* Vivid sky blue 900 - Light sky */
 
   /* Neutral Colors */
-  --rd-gray: #eeeeee; /* Anti-flash white - Light gray */
+  --rd-gray: #949494; /* Anti-flash white - Light gray */
   --rd-gray-light: #fbfbfb; /* Anti-flash white 900 - Very light gray */
   --rd-white: #fefefe; /* White - Pure white */
 
@@ -66,6 +66,12 @@
   .text-rd-sky {
     color: var(--rd-sky);
   }
+  .text-rd-gray {
+    color: var(--rd-gray);
+  }
+  .text-rd-white {
+    color: var(--rd-white);
+  }
 
   .bg-rd-blue {
     background-color: var(--rd-blue);
@@ -100,6 +106,23 @@
   }
   .border-rd-cyan {
     border-color: var(--rd-cyan);
+  }
+  .border-rd-gray {
+    border-color: var(--rd-gray);
+  }
+
+  /* Hover states */
+  .hover\:border-rd-blue:hover {
+    border-color: var(--rd-blue);
+  }
+  .hover\:border-rd-cyan:hover {
+    border-color: var(--rd-cyan);
+  }
+  .hover\:bg-rd-cyan-light:hover {
+    background-color: var(--rd-cyan-light);
+  }
+  .hover\:bg-rd-sky-light:hover {
+    background-color: var(--rd-sky-light);
   }
 
   /* Accessibility helper */

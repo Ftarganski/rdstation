@@ -45,10 +45,12 @@ const PreferencesField = memo(
     if (isLoading) {
       return (
         <div className={`mb-6 ${className}`} data-testid={testId}>
-          <h3 className="text-lg font-semibold mb-3 text-gray-800">{title}</h3>
+          <h3 className="text-lg font-semibold mb-3 text-rd-blue-dark">
+            {title}
+          </h3>
           <div className="flex items-center justify-center py-8">
-            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600 mr-3"></div>
-            <span className="text-gray-600">Carregando preferências...</span>
+            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-rd-blue mr-3"></div>
+            <span className="text-rd-gray">Carregando preferências...</span>
           </div>
         </div>
       );
@@ -57,8 +59,10 @@ const PreferencesField = memo(
     if (preferences.length === 0) {
       return (
         <div className={`mb-6 ${className}`} data-testid={testId}>
-          <h3 className="text-lg font-semibold mb-3 text-gray-800">{title}</h3>
-          <p className="text-gray-500 text-sm italic">
+          <h3 className="text-lg font-semibold mb-3 text-rd-blue-dark">
+            {title}
+          </h3>
+          <p className="text-rd-gray text-sm italic">
             Nenhuma preferência disponível no momento.
           </p>
         </div>
@@ -67,11 +71,11 @@ const PreferencesField = memo(
 
     return (
       <fieldset className={`mb-6 ${className}`} data-testid={testId}>
-        <legend className="text-lg font-semibold mb-3 text-gray-800">
+        <legend className="text-lg font-semibold mb-3 text-rd-blue-dark">
           {title}
           {required && <span className="text-red-500 ml-1">*</span>}
           {selectionCount > 0 && (
-            <span className="ml-2 text-sm text-blue-600 font-normal">
+            <span className="ml-2 text-sm text-rd-blue font-normal">
               ({selectionCount} selecionada{selectionCount !== 1 ? "s" : ""})
             </span>
           )}
@@ -87,9 +91,9 @@ const PreferencesField = memo(
               checked={isSelected(preference)}
               onChange={() => handlePreferenceChange(preference)}
               disabled={disabled}
-              className="p-2 rounded-lg border border-gray-200 hover:border-blue-300 transition-colors hover:bg-blue-50"
-              inputClassName="text-blue-600 focus:ring-blue-500"
-              labelClassName="text-gray-700 font-medium"
+              className="p-2 rounded-lg border border-rd-gray hover:border-rd-blue transition-colors hover:bg-rd-sky-light"
+              inputClassName="text-rd-blue focus:ring-rd-blue"
+              labelClassName="text-rd-blue-dark font-medium"
               data-testid={`preference-${index}`}
             >
               {preference.label || preference.name || preference}
