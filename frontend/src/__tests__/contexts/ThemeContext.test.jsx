@@ -5,11 +5,7 @@
 
 import { act, renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, test, vi } from "vitest";
-import {
-  ThemeProvider,
-  THEMES,
-  useTheme,
-} from "../../../contexts/ThemeContext";
+import { ThemeProvider, THEMES, useTheme } from "../../contexts/ThemeContext";
 
 // Mock do localStorage
 const localStorageMock = {
@@ -38,7 +34,7 @@ Object.defineProperty(window, "matchMedia", {
   })),
 });
 
-describe("ThemeContext", () => {
+describe("useTheme Hook", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     // Reset document classes

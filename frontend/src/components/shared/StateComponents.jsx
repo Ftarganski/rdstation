@@ -14,7 +14,9 @@ import { memo } from "react";
 export const LoadingState = memo(
   ({
     message = "Carregando...",
+    description,
     size = "medium",
+    variant = "default",
     className = "",
     showSpinner = true,
     "data-testid": testId = "loading-state",
@@ -31,20 +33,28 @@ export const LoadingState = memo(
       large: "text-lg",
     };
 
+    const containerClasses = {
+      default: "flex flex-col items-center justify-center py-8",
+      app: "min-h-screen bg-rd-gray-light flex flex-col justify-center items-center",
+    };
+
     return (
       <div
-        className={`flex flex-col items-center justify-center py-8 ${className}`}
+        className={`${containerClasses[variant]} ${className}`}
         data-testid={testId}
       >
-        {showSpinner && (
-          <div
-            className={`animate-spin rounded-full border-b-2 border-rd-blue mb-4 ${sizeClasses[size]}`}
-            aria-hidden="true"
-          />
-        )}
-        <p className={`text-rd-gray text-center ${textSizeClasses[size]}`}>
-          {message}
-        </p>
+        <div className="text-center max-w-md">
+          {showSpinner && (
+            <div
+              className={`animate-spin rounded-full border-b-2 border-rd-blue mb-4 ${sizeClasses[size]}`}
+              aria-hidden="true"
+            />
+          )}
+          <p className={`text-rd-gray text-center ${textSizeClasses[size]}`}>
+            {message}
+          </p>
+          {description && <p className="text-rd-gray mt-4">{description}</p>}
+        </div>
       </div>
     );
   }
@@ -62,6 +72,7 @@ export const ErrorState = memo(
     retryText = "Tentar novamente",
     className = "",
     variant = "error",
+    layout = "default",
     "data-testid": testId = "error-state",
   }) => {
     const variantClasses = {
@@ -85,11 +96,18 @@ export const ErrorState = memo(
       },
     };
 
+    const layoutClasses = {
+      default: "",
+      app: "min-h-screen bg-rd-gray-light flex flex-col justify-center items-center p-4",
+    };
+
     const styles = variantClasses[variant];
 
-    return (
+    const content = (
       <div
-        className={`p-6 rounded-lg border ${styles.container} ${className}`}
+        className={`p-6 rounded-lg border ${styles.container} ${
+          layout === "app" ? "max-w-md w-full" : ""
+        } ${className}`}
         data-testid={testId}
       >
         <div className="text-center">
@@ -109,6 +127,12 @@ export const ErrorState = memo(
         </div>
       </div>
     );
+
+    if (layout === "app") {
+      return <div className={layoutClasses.app}>{content}</div>;
+    }
+
+    return content;
   }
 );
 
@@ -139,7 +163,9 @@ export const EmptyState = memo(
 // PropTypes
 LoadingState.propTypes = {
   message: PropTypes.string,
+  description: PropTypes.string,
   size: PropTypes.oneOf(["small", "medium", "large"]),
+  variant: PropTypes.oneOf(["default", "app"]),
   className: PropTypes.string,
   showSpinner: PropTypes.bool,
   "data-testid": PropTypes.string,
@@ -152,6 +178,7 @@ ErrorState.propTypes = {
   retryText: PropTypes.string,
   className: PropTypes.string,
   variant: PropTypes.oneOf(["error", "warning", "info"]),
+  layout: PropTypes.oneOf(["default", "app"]),
   "data-testid": PropTypes.string,
 };
 

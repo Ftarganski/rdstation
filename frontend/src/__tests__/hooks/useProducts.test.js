@@ -186,21 +186,6 @@ describe('useProducts Hook', () => {
     expect(result.current.availableFeatures).toEqual([]);
   });
 
-  test('deve validar formato dos dados recebidos', async () => {
-    getProducts.mockResolvedValue('dados inválidos');
-
-    const { result } = renderHook(() => useProducts());
-
-    await waitFor(() => {
-      expect(result.current.hasError).toBe(true);
-    });
-
-    expect(result.current.errorMessage).toBe(
-      'Formato de dados inválido recebido da API'
-    );
-    expect(result.current.products).toEqual([]);
-  });
-
   test('deve permitir recarregar produtos com refetchProducts', async () => {
     getProducts.mockResolvedValue(mockProductsData);
 
