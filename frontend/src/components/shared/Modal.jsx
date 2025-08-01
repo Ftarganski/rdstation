@@ -3,9 +3,9 @@
  * Segue princípios de acessibilidade e UX
  */
 
+import { X } from "lucide-react";
 import PropTypes from "prop-types";
 import { useCallback, useEffect } from "react";
-import { X } from 'lucide-react';
 
 /**
  * Componente Modal
@@ -111,9 +111,7 @@ const Modal = ({
                 aria-label="Fechar modal"
                 data-testid="modal-close-button"
               >
-                <X
-                  className="w-6 h-6"
-                />
+                <X className="w-6 h-6" />
               </button>
             )}
           </div>

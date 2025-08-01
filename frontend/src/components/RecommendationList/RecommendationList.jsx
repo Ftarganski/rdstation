@@ -5,9 +5,9 @@
  */
 
 import { EmptyState, ErrorState, LoadingState } from "@/components";
+import { Archive, Eye } from "lucide-react";
 import PropTypes from "prop-types";
 import { memo } from "react";
-import { Eye, Archive } from 'lucide-react';
 
 /**
  * Componente para renderizar um item individual de recomendação
@@ -113,9 +113,7 @@ const RecommendationItem = memo(
                 onClick={handleCardClick}
                 className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-rd-blue-dark bg-rd-sky-light hover:bg-rd-cyan-light rounded-md transition-colors duration-200"
               >
-                <Eye
-                  className="w-4 h-4"
-                />
+                <Eye className="w-4 h-4" />
                 Ver Detalhes
               </button>
             </div>
@@ -192,10 +190,7 @@ const RecommendationList = memo(
             title={emptyTitle}
             message={emptyMessage}
             icon={
-              <Archive
-                className="h-16 w-16 text-rd-gray"
-                strokeWidth={1}
-              />
+              <Archive className="h-16 w-16 text-rd-gray" strokeWidth={1} />
             }
           />
         </div>
