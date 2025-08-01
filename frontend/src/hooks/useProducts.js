@@ -1,10 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { productService as getProducts } from '../services';
 
-// Constantes para controle de amostragem
-const MAX_PREFERENCES_PER_PRODUCT = 2;
-const MAX_FEATURES_PER_PRODUCT = 2;
-
 /**
  * Estados possíveis para o carregamento de dados
  */
@@ -16,13 +12,13 @@ const LOADING_STATES = {
 };
 
 /**
- * Hook personalizado para buscar produtos e extrair amostras aleatórias de
+ * Hook personalizado para buscar produtos e extrair todas as
  * preferências e funcionalidades para exibição no formulário.
  *
  * @returns {Object} Objeto contendo produtos, preferências, funcionalidades e estados
  * @returns {Array} returns.products - Lista completa de produtos
- * @returns {Array} returns.availablePreferences - Amostra aleatória de preferências
- * @returns {Array} returns.availableFeatures - Amostra aleatória de funcionalidades
+ * @returns {Array} returns.availablePreferences - Todas as preferências em ordem alfabética
+ * @returns {Array} returns.availableFeatures - Todas as funcionalidades em ordem alfabética
  * @returns {boolean} returns.isLoading - Indica se os dados estão sendo carregados
  * @returns {boolean} returns.hasError - Indica se houve erro no carregamento
  * @returns {string|null} returns.errorMessage - Mensagem de erro, se houver
@@ -32,19 +28,6 @@ const useProducts = () => {
   const [products, setProducts] = useState([]);
   const [loadingState, setLoadingState] = useState(LOADING_STATES.IDLE);
   const [errorMessage, setErrorMessage] = useState(null);
-
-  /**
-   * Gera uma amostra aleatória de um array
-   * @param {Array} array - Array original
-   * @param {number} maxItems - Número máximo de itens na amostra
-   * @returns {Array} Amostra aleatória do array
-   */
-  const getRandomSample = useCallback((array, maxItems) => {
-    if (!Array.isArray(array) || array.length === 0) return [];
-
-    const shuffled = [...array].sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, Math.min(maxItems, array.length));
-  }, []);
 
   /**
    * Busca e processa os dados dos produtos
@@ -73,46 +56,44 @@ const useProducts = () => {
   }, []);
 
   /**
-   * Extrai e mistura preferências de todos os produtos
+   * Extrai todas as preferências de todos os produtos
    */
   const availablePreferences = useMemo(() => {
     const allPreferences = [];
 
     products.forEach((product) => {
       if (product.preferences && Array.isArray(product.preferences)) {
-        const samplePreferences = getRandomSample(
-          product.preferences,
-          MAX_PREFERENCES_PER_PRODUCT
-        );
-        allPreferences.push(...samplePreferences);
+        // Adiciona TODAS as preferências (não apenas uma amostra)
+        allPreferences.push(...product.preferences);
       }
     });
 
-    // Remove duplicatas e retorna uma amostra final
+    // Remove duplicatas e ordena alfabeticamente
     const uniquePreferences = [...new Set(allPreferences)];
-    return getRandomSample(uniquePreferences, uniquePreferences.length);
-  }, [products, getRandomSample]);
+    return uniquePreferences.sort((a, b) =>
+      a.localeCompare(b, 'pt-BR', { sensitivity: 'base' })
+    );
+  }, [products]);
 
   /**
-   * Extrai e mistura funcionalidades de todos os produtos
+   * Extrai todas as funcionalidades de todos os produtos
    */
   const availableFeatures = useMemo(() => {
     const allFeatures = [];
 
     products.forEach((product) => {
       if (product.features && Array.isArray(product.features)) {
-        const sampleFeatures = getRandomSample(
-          product.features,
-          MAX_FEATURES_PER_PRODUCT
-        );
-        allFeatures.push(...sampleFeatures);
+        // Adiciona TODAS as funcionalidades (não apenas uma amostra)
+        allFeatures.push(...product.features);
       }
     });
 
-    // Remove duplicatas e retorna uma amostra final
+    // Remove duplicatas e ordena alfabeticamente
     const uniqueFeatures = [...new Set(allFeatures)];
-    return getRandomSample(uniqueFeatures, uniqueFeatures.length);
-  }, [products, getRandomSample]);
+    return uniqueFeatures.sort((a, b) =>
+      a.localeCompare(b, 'pt-BR', { sensitivity: 'base' })
+    );
+  }, [products]);
 
   // Estados derivados para melhor semântica
   const isLoading = loadingState === LOADING_STATES.LOADING;
