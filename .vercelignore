@@ -1,0 +1,16 @@
+# Arquivos e pastas que não devem ser incluídos no deploy
+
+backend/
+frontend/node_modules/
+frontend/src/
+frontend/public/
+frontend/.git/
+frontend/.env.local
+frontend/.env.development
+\*.log
+.DS_Store
+.vscode/
+.idea/
+README.md
+REPORT.md
+install.sh
