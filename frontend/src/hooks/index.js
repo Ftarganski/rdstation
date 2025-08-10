@@ -11,9 +11,6 @@ export { default as useForm } from './useForm';
 // Hook para busca e gerenciamento de produtos
 export { default as useProducts } from './useProducts';
 
-// Hook para sistema de recomendações
-export { default as useRecommendations } from './useRecommendations';
-
 // Hook para gerenciamento completo de recomendações e filtros
 export { useRecommendationManager } from './useRecommendationManager';
 
