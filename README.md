@@ -76,34 +76,34 @@ O **RD Station Recommendation System** é uma aplicação web moderna desenvolvi
 
 ```
 src/
-├── 📁 __mocks__/          			# Mocks para testes
-├── 📁 __tests__/          			# Testes unitários
+├── 📁 __mocks__/          					# Mocks para testes
+├── 📁 __tests__/          					# Testes unitários
 ├── 📁 components/
-│   ├── 📁 Form/				# Sistema de formulário
+│   ├── 📁 Form/							# Sistema de formulário
 │   │   ├── Fields/
 │   │   │   ├── FeaturesField.jsx       	# Campo de funcionalidades
 │   │   │   ├── PreferencesField.jsx    	# Campo de preferências
-│   │   │   └── RecommendationTypeField.jsx 	# Campo tipo recomendação
+│   │   │   └── RecommendationTypeField.jsx # Campo tipo recomendação
 │   │   ├── SubmitButton/
 │   │   │   └── SubmitButton.jsx        	# Botão inteligente
-│   │   └── RecommendationForm.jsx              # Formulário principal
+│   │   └── RecommendationForm.jsx          # Formulário principal
 │   ├── 📁 RecommendationList/
 │   │   └── RecommendationList.jsx      	# Lista de resultados
-│   └── 📁 shared/         			# Componentes reutilizáveis
-│       ├── StateComponents.jsx  		# Loading, Error, Empty states
-│       └── Input.jsx           		# Input genérico acessível
-├── 📁 constants/          			# Configurações centralizadas
-│   └── formConstants.js    			# Tipos, validações, mensagens
-├── 📁 hooks/              			# Hooks customizados
+│   └── 📁 shared/         					# Componentes reutilizáveis
+│       ├── StateComponents.jsx  			# Loading, Error, Empty states
+│       └── Input.jsx           			# Input genérico acessível
+├── 📁 constants/          					# Configurações centralizadas
+│   └── formConstants.js    				# Tipos, validações, mensagens
+├── 📁 hooks/              					# Hooks customizados
 │   ├── useForm.js  		            	# Gerenciamento do Formulário
-│   ├── useMultipleSelection.js  		# Seleção múltipla genérica
-│   ├── useProducts.js           		# Gerenciamento de produtos
+│   ├── useMultipleSelection.js  			# Seleção múltipla genérica
+│   ├── useProducts.js           			# Gerenciamento de produtos
 │   ├── useRecomendation.js    		    	# Processo de recomendação
-│   └── useSingleSelection.js    		# Seleção única genérica
+│   └── useSingleSelection.js    			# Seleção única genérica
 ├── 📁 services/
 │   └── recommendation.service.js       	# Lógica de negócio
-└── 📁 utils/              			# Utilitários reutilizáveis
-    └── formValidation.js   			# Funções puras de validação
+└── 📁 utils/              					# Utilitários reutilizáveis
+    └── formValidation.js   				# Funções puras de validação
 ```
 
 #### **🎯 Princípios Aplicados**
